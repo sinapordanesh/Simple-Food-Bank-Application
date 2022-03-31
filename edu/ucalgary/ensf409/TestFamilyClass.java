@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 public class TestFamilyClass {
 
+    //***************** Test Can be Tested multiple times with modify these values *****************
      public int[] expectedNutritionalNeedsAdultMale = {16, 28, 26, 30, 2500};
      public int[] expectedNutritionalNeedsAdultFemale = {16, 28, 26, 30, 2500};
      public int[] expectedNutritionalNeedsChildrenOver8 = {21, 33, 31, 15, 2000};
@@ -22,6 +23,7 @@ public class TestFamilyClass {
     public int numChildUnder8 = 1;
     public int numChildOver8 = 1;
     public int[] expectedNeedsFamily = new int[5];
+    //**********************************************************************************************
 
     /**
      *  im not sure why it gives me an error message here
@@ -43,10 +45,6 @@ public class TestFamilyClass {
      */
     @Test
      public void testFamilyClassConstructor() {
-         int numAdultMale = 1;
-         int numAdultFeMale = 1;
-         int numChildUnder8 = 1;
-         int numChildOver8 = 1;
 
          Family fam = new Family(numAdultMale,numAdultFeMale,numChildOver8,numChildUnder8);
          assertNotNull("Family class was not created", fam);
@@ -99,7 +97,7 @@ public class TestFamilyClass {
      *  check if it sets correct hamper
      */
     @Test
-    public void testsetHamper() {
+    public void testSetHamper() {
         Family fam = new Family(numAdultMale,numAdultFeMale,numChildOver8,numChildUnder8);
         Hamper actualHamper = new Hamper(expectedNutritionalItemsFamily);
         fam.setHamper(actualHamper);
@@ -196,6 +194,7 @@ public class TestFamilyClass {
         int expectedNumAdultFemale = 2;
         int expectedNumChildOver8 = 1;
         int expectedNumChildUnder8 = 0;
+
 
     }
 
