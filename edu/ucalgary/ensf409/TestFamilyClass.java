@@ -52,6 +52,7 @@ public class TestFamilyClass {
          assertNotNull("Family class was not created", fam);
     }
 
+
      /**
       *  calcIndividualWeeklyNutritionalNeeds()
       *  check if it creates and set NutritionalItems for that relates to specific family object
