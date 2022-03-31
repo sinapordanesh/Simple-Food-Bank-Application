@@ -1,3 +1,36 @@
 -tests naming convention:
     - FoodTests instead of TestFoodClass
 -java doc @author needs to be directly above class (thus,under imports/packages)
+
+
+
+    /**
+     *  for createSuitableHamper(nutritionalRequirements: NutritionalItems) method in Family Class
+     *  my suggestion: since family class and hamper class is composition relationship,
+     *  what if we just create and calculate best hamper within the Family class constructor
+     *  because it just seems like duplicated method calcBestHamper() in Hamper Class
+     *
+     *
+     *  public Family(AM:int, AF:int, CO8:int, CU8:int) {
+     *      this.AM = AM;
+     *      this.AF = AF;
+     *      this.C08 = C08;
+     *      this.CU8 = CU8;
+     *
+     *      calcIndividualWeeklyNutritionalNeeds()  // in here this.IndividualWeeklyNutritionalNeeds will set
+     *
+     *      this.hamper = new Hamper(this.IndividualWeeklyNutritionalNeeds)
+     *
+     *  }
+     *
+     *  public Hamper(nutritionalRequirements: NutritionalItems){
+     *      ...
+     *      calcBestHamper()
+     *      ...
+     *  }
+     *
+     */
+
+         /**
+          * getIndividualWeeklyNutritionalNeeds() must be added in UML in Family Class
+          */
