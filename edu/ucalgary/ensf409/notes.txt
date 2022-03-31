@@ -1,0 +1,3 @@
+-tests naming convention:
+    - FoodTests instead of TestFoodClass
+-java doc @author needs to be directly above class (thus,under imports/packages)
