@@ -14,7 +14,7 @@ import java.util.*;
  @since 1.0
  */
 
-public class TextOutputTests {
+public class TextOutputTest {
     public final Family FAMILY1 = new Family(1,1,1,1);
     public final Family FAMILY2 = new Family(1,1,1,0);
     public final Family FAMILY3 = new Family(1,0,1,0);
@@ -47,11 +47,16 @@ public class TextOutputTests {
     }
 
     /* 
-        This method has no purpose, will revise later
+        getOrder() returns the Order (of type Order)
      */
     @Test
     public void testGetOrder()
     {
-        ;
+        TextOutput newTextOutput = new TextOutput(ORDER);
+        Order actual = newTextOutput.getOrder();
+        Stirng expected = ORDER;
+        assertEquals("actual value (of type ORDER) does not equal the actual"
+        + "value", expected, actual);
+
     }
 }

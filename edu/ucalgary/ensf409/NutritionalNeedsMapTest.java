@@ -14,7 +14,7 @@ import java.util.*;
  @since 1.0
  */
 
-public class NutritionalNeedsMapTests {
+public class NutritionalNeedsMapTest {
     /* 
     NutritionalNeedsMap(data:SQL) is called with an SQL table, and return a 
     hash-map

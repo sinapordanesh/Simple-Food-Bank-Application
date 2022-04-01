@@ -13,7 +13,7 @@ import java.util.*;
  @since 1.0
  */
 
-public class NutritionalItemsTests {
+public class NutritionalItemsTest {
 
     //Test data
     public final int[] expectedNutritionalNeedsAdultMale = {16, 28, 26, 30, 2500};
