@@ -1,7 +1,6 @@
 package edu.ucalgary.ensf409;
 
 import org.junit.*;
-import static org.junit.Assert.*;
 
 /**
  @author Saman Pordanesh <a href="mailto:saman.pordanesh@ucalgary.ca">
@@ -11,7 +10,7 @@ import static org.junit.Assert.*;
  @since 1.0
  */
 
-public class TestInventoryClass {
+public class InventoryTest {
 
     /**
      * Inventory(SQL) is called with a SQL object and check

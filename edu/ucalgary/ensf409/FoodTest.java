@@ -10,7 +10,7 @@ import org.junit.*;
  @since 1.0
  */
 
-public class TestFoodClass {
+public class FoodTest {
 
     
 

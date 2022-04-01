@@ -15,10 +15,10 @@ import java.util.*;
  */
 
 public class NutritionalNeedsMapTest {
-    /* 
-    NutritionalNeedsMap(data:SQL) is called with an SQL table, and return a 
-    hash-map
-     */
+    /**
+     *NutritionalNeedsMap(data:SQL) is called with an SQL table, and return a
+     *     hash-map
+     **/
     @Test
     public void testNutritionalNeedsMap_DefaultConstructor() {
         //how to provide SQL table for tests
