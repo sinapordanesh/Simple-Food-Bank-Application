@@ -32,13 +32,13 @@ public class OrderTest {
     private Order order = new Order(families);
 
     private ArrayList<Food> foodItems = {
-            new Food(1, "apple", 150, 0, 350, 0, 550),
-            new Food(2, "fish", 0, 250, 0, 450, 0),
+            new Food(12, "apple", 0, 30, 0, 70, 1000),
+            new Food(23, "fish", 70 , 0, 30, 1000),
     };
 
     private HashMap<Integer, Food> inventory = new HashMap<Integer, Food>() {{
-        put(1, new Food(1, "apple", 150, 0, 350, 0, 550));
-        put(2, new Food(2, "fish", 0, 250, 0, 450, 0));
+        put(12, new Food(12, "apple", 0, 30, 0, 70, 1000));
+        put(23, new Food(23, "fish", 70 , 0, 30, 40, 1000));
     }};
 
 

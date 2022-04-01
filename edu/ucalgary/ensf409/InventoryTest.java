@@ -1,6 +1,11 @@
 package edu.ucalgary.ensf409;
 
 import org.junit.*;
+import static org.junit.Assert.*;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  @author Saman Pordanesh <a href="mailto:saman.pordanesh@ucalgary.ca">
@@ -12,22 +17,41 @@ import org.junit.*;
 
 public class InventoryTest {
 
+    //in this test, I won't be able to test constructor, as we don't have access to the SQL class yet.
+
+    Food food = new Food(12, "apple", 0, 30, 0, 70, 1000);
+
     /**
-     * Inventory(SQL) is called with a SQL object and check
-     * whether inventory ArrayList is static or not
+     *  Inventory Static HashMap is called to check whether is acting as a static parameter or not.
      */
     @Test
     public void testInventoryHashMapIsStatic(){
 
+        Food expectedFoodObject = new Food(12, "apple", 0, 30, 0, 70, 1000);
+
+        //add to the static hash map
+        Inventory.inventory.put(12, expectedFoodObject);
+        //get from static hash map
+        Food realFoodObject = Inventory.inventpry.get(12);
+
+        assertSame("Inventory hash map wasn't updated properly as an static parameter!", expectedFoodObject, realFoodObject);
+
     }
 
     /**
-     * Inventory(SQL) is called with a SQL object and check
-     * whether removedItems ArrayList is static or not
+     * RemovedItems Static ArrayList is called to check whether is acting as a static parameter or not.
      */
     @Test
     public void testRemovedItemsArrayListIsStatic(){
 
+        Food expectedFoodObject = new Food(12, "apple", 0, 30, 0, 70, 1000);
+
+        //add to the static hash map
+        Inventory.removedItems.put(expectedFoodObject);
+        //get from static hash map
+        Food realFoodObject = Inventory.removedItems.get(0);
+
+        assertSame("RemovedItems hash map wasn't updated properly as an static parameter!", expectedFoodObject, realFoodObject);
     }
 
 
@@ -37,7 +61,19 @@ public class InventoryTest {
      */
     @Test
     public void testInventoryConstructorTrowsCorrectException(){
+        // this test needs an SQL object which we dont have it now. I'll add one later.
 
+        boolean throwException = false;
+
+        // sql is a wrong object
+        try {
+            Inventory inventory = new Inventory(sql);
+
+        }catch (IllegalArgumentException e){
+            throwException = true;
+        }
+
+        assertTrue("Inventory constructor did not throw an IllegalArgumentException when given an invalid SQL as its argument!", throwException);
     }
 
     /**
@@ -46,11 +82,12 @@ public class InventoryTest {
      */
     @Test
     public void testInventoryConstructorGetsDataFromDatabase(){
-
+        //We need a SQL object for this test as well, which is not available yet.
     }
 
     /**
-     * Inventory(SQL) is called with a SQL object updateInventory() returns
+     * Inventory(SQL) is called with a SQL object
+     * updateInventory() returns
      * true if database is updated.
      * Also, check the new database by expected one
      * SQL(url: String, user: String, pw: String) to get the new table
@@ -58,7 +95,7 @@ public class InventoryTest {
      */
     @Test
     public void testUpdateInventoryWillUpdateTheDataBase(){
-
+        //We need a SQL object for this test as well, which is not available yet.
     }
 
     /**
@@ -68,5 +105,15 @@ public class InventoryTest {
     @Test
     public void testInventoryIsEmpty(){
 
+        boolean expectedResult;
+
+        //make sure inventory is empty
+        Inventory.inventory.clear();
+
+        if (Inventory.inventory.isEmpty()){
+            expectedResult = true;
+        }
+
+        assertTrue("InventoryIsEmpty methos is not returning the appropriate boolean value!", realResult);
     }
 }
