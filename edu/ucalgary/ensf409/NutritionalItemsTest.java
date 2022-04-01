@@ -27,8 +27,8 @@ public class NutritionalItemsTest {
     public final int numChildOver8 = 1;
     public final int[] expectedNeedsFamily = new int[5];
 
-    /* 
-    NutritionalItems constructor checks if object created successfully or not
+    /**
+     *  NutritionalItems constructor checks if object created successfully or not
      */
     @Test
     public void testNutritionalItemsTests_Constructor()
