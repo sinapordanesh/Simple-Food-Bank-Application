@@ -31,6 +31,9 @@ public class HamperClassTest {
     /**
      *  im not sure why it gives me an error message here
      */
+
+
+
     for (int i = 0; i < expectedNeedsFamily.length-1 ; i++){
         expectedNeedsFamily[i] = (numAdultMale * expectedNutritionalNeedsAdultMale[4]*expectedNutritionalNeedsAdultMale[i]*(1/100)) +
                 (numAdultFeMale * expectedNutritionalNeedsAdultFemale[4]*expectedNutritionalNeedsAdultFemale[i]*(1/100)) +
