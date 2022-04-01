@@ -34,3 +34,7 @@
          /**
           * getIndividualWeeklyNutritionalNeeds() must be added in UML in Family Class
           */
+
+          /**
+          *  setInventory in Inventory class for testing perpose
+          */
