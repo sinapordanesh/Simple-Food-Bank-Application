@@ -57,11 +57,6 @@ public class NutritionalItemsTest {
 
     }
     
-    //does not have purpose, will revise later
-    public void testCaloriesToPercentages()
-    {
-
-    }
 
     //below are tests for setters/getters
     @Test
