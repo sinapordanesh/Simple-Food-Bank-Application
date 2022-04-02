@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HamperClassTest {
+public class HamperTest {
 
 
     //***************** Test Can be Tested multiple times with modify these values *****************

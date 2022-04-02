@@ -11,7 +11,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 
-public class FamilyClassTest {
+public class FamilyTest {
 
     //***************** Test Can be Tested multiple times with modify these values *****************
     public int[] expectedNutritionalNeedsAdultMale = {16, 28, 26, 30, 2500};
@@ -183,7 +183,7 @@ public class FamilyClassTest {
      */
     @Test
     public void testSetterForMembersInFamilyClass() {
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8); // original 1,1,1,2
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8,  numChildUnder8); // original 1,1,1,2
         int expectedNumAdultMale = 3;
         int expectedNumAdultFemale = 2;
         int expectedNumChildOver8 = 1;
