@@ -22,11 +22,12 @@ public class TextOutputTest {
     public final Order ORDER = new Order(FAMILIES);
     
     /**
+     * call TextOutput(order) with an Order object
      * TextOuput(Order) is called with a variable from class order and outputs
-     * it to a txt file, checks if object is created
+     *  it to a txt file, checks if object is created
      */
     @Test
-    public void testTextOuput_DefaultConstructor()
+    public void testTextOuputDefaultConstructor()
     {
         TextOutput newTextOutput = new TextOutput(ORDER);
         assertNotNull("constructor failed, new TextOutput object is null", 
@@ -34,7 +35,8 @@ public class TextOutputTest {
     }
 
     /**
-     *    test for formattedOuput() returns a formatted string
+     * call TextOutput(order) with an Order object
+     * formattedOutput() returns a formatted string
      */
     @Test
     public void testFormattedOuput()
@@ -47,7 +49,8 @@ public class TextOutputTest {
     }
 
     /**
-     * thes for getOrder() returns the Order (of type Order)
+     * call TextOutput(order) with an Order object
+     * getOrder() returns the Order (of type Order)
      */
     @Test
     public void testGetOrder()
@@ -57,6 +60,8 @@ public class TextOutputTest {
         Stirng expected = ORDER;
         assertEquals("actual value (of type ORDER) does not equal the actual"
         + "value", expected, actual);
+
+    }
 
     }
 }
