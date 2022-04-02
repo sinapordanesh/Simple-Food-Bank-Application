@@ -39,9 +39,10 @@ public class NutritionalItemsTest {
         + "is null: ", newNutritionalItems);
     }
 
-    /* 
-    PercentageToCalories() calculates the calories required for the Wholegrains,
-    FruitVeggies, Protien and Other, rounds them down if not integer
+    /**
+     * call NutritionalItems(int, int, int, int, int) with five integer arguments.
+     * PercentageToCalories() calculates the calories required for the Wholegrains,
+     * FruitVeggies, Protien and Other, rounds them down if not integer
      */
     @Test
     public void testPercentageToCalories()
@@ -56,14 +57,12 @@ public class NutritionalItemsTest {
 
 
     }
-    
-    //does not have purpose, will revise later
-    public void testCaloriesToPercentages()
-    {
 
-    }
 
-    //below are tests for setters/getters
+    /**
+     * call NutritionalItems(int, int, int, int, int) with five integer arguments
+     * getWholeGrains returns the right value and assert if not
+     */
     @Test
     public void testGetWholeGrains()
     {
@@ -74,6 +73,10 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     * call NutritionalItems(int, int, int, int, int) with five integer arguments
+     * getFruitVeggies returns the right value and assert if not
+     */
     @Test
     public void testGetFruitVeggies()
     {
@@ -84,8 +87,12 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     * call NutritionalItems(int, int, int, int, int) with five integer arguments
+     * getProtein returns the right value and assert if not
+     */
     @Test
-    public void testGetProtien()
+    public void testGetProtein()
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
@@ -94,6 +101,10 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     * call NutritionalItems(int, int, int, int, int) with five integer arguments
+     * getOthers returns the right value and assert if not
+     */
     @Test
     public void testGetOthers()
     {
@@ -104,6 +115,10 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     * call NutritionalItems(int, int, int, int, int) with five integer arguments
+     * getCalories returns the right value and assert if not
+     */
     @Test
     public void testGetCalories()
     {
