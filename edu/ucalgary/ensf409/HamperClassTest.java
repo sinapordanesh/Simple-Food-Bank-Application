@@ -2,7 +2,7 @@
  @author Jinsu Kwak <a href="mailto:jinsu.kwak@ucalgary.ca">
  jinsu.kwak@ucalgary.ca</a>
  @UCID 30097737
- @version 1.0
+ @version 1.3
  @since 1.0
  */
 
@@ -28,38 +28,50 @@ public class HamperClassTest {
     public int[] expectedNeedsFamily = new int[4];
     public int[] expectedNeedsFamilyPercentage = new int[4];
     //**********************************************************************************************
+
+
     /**
-     *  im not sure why it gives me an error message here
+     * helper method to create class NutritionalItems with given family members
      */
+    @Test
+    public NutritionalItems createNutritionalItemsForFamily(){
+        for (int i = 0; i < expectedNeedsFamily.length-1 ; i++){
+            // convert percentage form of individual family member type nutritional needs to actual value of specific nutrition type
+            // sum them up and store at array
+            expectedNeedsFamily[i] = (numAdultMale * expectedNutritionalNeedsAdultMale[4]* expectedNutritionalNeedsAdultMale[i]*(1/100)) +
+                    (numAdultFeMale * expectedNutritionalNeedsAdultFemale[4]*expectedNutritionalNeedsAdultFemale[i]*(1/100)) +
+                    (numChildOver8 * expectedNutritionalNeedsChildrenOver8[4]*expectedNutritionalNeedsChildrenOver8[i]*(1/100)) +
+                    (numChildUnder8 * expectedNutritionalNeedsChildrenUnder8[4]*expectedNutritionalNeedsChildrenUnder8[i]*(1/100));
+        }
+
+        // convert back to percentage form for that family
+        for(int i = 0 ; i < expectedNeedsFamily.length-1 ; i ++){
+            expectedNeedsFamilyPercentage[i] = (expectedNeedsFamily[i]/(expectedNeedsFamily[0]+ expectedNeedsFamily[1]
+                    +expectedNeedsFamily[2]+expectedNeedsFamily[3]))*100;
+        }
+
+        // calculate weekly calories separately
+        int totalCaloriesFamily = expectedNutritionalNeedsAdultMale[4]*7 + expectedNutritionalNeedsAdultFemale[4]*7
+                + expectedNutritionalNeedsChildrenOver8[4]*7 + expectedNutritionalNeedsChildrenUnder8[4]*7;
 
 
+        NutritionalItems expectedNutritionalItemsFamily = new NutritionalItems(expectedNeedsFamilyPercentage[0],
+                expectedNeedsFamilyPercentage[1], expectedNeedsFamilyPercentage[2],expectedNeedsFamilyPercentage[3],
+                totalCaloriesFamily);
 
-    for (int i = 0; i < expectedNeedsFamily.length-1 ; i++){
-        expectedNeedsFamily[i] = (numAdultMale * expectedNutritionalNeedsAdultMale[4]*expectedNutritionalNeedsAdultMale[i]*(1/100)) +
-                (numAdultFeMale * expectedNutritionalNeedsAdultFemale[4]*expectedNutritionalNeedsAdultFemale[i]*(1/100)) +
-                (numChildOver8 * expectedNutritionalNeedsChildrenOver8[4]*expectedNutritionalNeedsChildrenOver8[i]*(1/100)) +
-                (numChildUnder8 * expectedNutritionalNeedsChildrenUnder8[4]*expectedNutritionalNeedsChildrenUnder8[i]*(1/100));
+        return expectedNutritionalItemsFamily;
     }
 
-    for(int i = 0 ; i < expectedNeedsFamily.length-1 ; i ++){
-        expectedNeedsFamilyPercentage[i] = (expectedNeedsFamily[i]/(expectedNeedsFamily[0]+ expectedNeedsFamily[1]
-                +expectedNeedsFamily[2]+expectedNeedsFamily[3]))*100;
-    }
-
-    int totalCaloriesFamily = expectedNutritionalNeedsAdultMale[4] + expectedNutritionalNeedsAdultFemale[4]
-            + expectedNutritionalNeedsChildrenOver8[4] + expectedNutritionalNeedsChildrenUnder8[4];
-
-
-    NutritionalItems expectedNutritionalItemsFamily = new NutritionalItems(expectedNeedsFamilyPercentage[0],
-            expectedNeedsFamilyPercentage[1], expectedNeedsFamilyPercentage[2],expectedNeedsFamilyPercentage[3],
-            totalCaloriesFamily);
 
     /**
      * Hamper(nutritionalRequirements: NutritionalItems)
      * check object created successfully or not.
+     * createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     * specific family with percentage form.
      */
     @Test
     public void testFamilyClassConstructor() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
         Hamper actualHamper = new Hamper(expectedNutritionalItemsFamily);
         assertNotNull("Hamper class was not created", actualHamper);
 
@@ -68,9 +80,13 @@ public class HamperClassTest {
     /**
      *  test for getNutritionalRequirement(): NutritionalItems
      *  check if it returns NutritionalItems object
+     *  createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     *  specific family with percentage form.
      */
     @Test
     public void testGetNutritionalRequirements() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
+
         Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         NutritionalItems actualNutritionalItem = hamper.getNutritionalRequirements();
         assertNotNull("NutritionalItem class was not returned through" +
@@ -81,9 +97,13 @@ public class HamperClassTest {
     /**
      *  test for setNutritionalRequirement(nutritionalRequirements: NutritionalItems)
      *  check if it set NutritionalItems with right object
+     *  createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     *  specific family with percentage form.
      */
     @Test
     public void testSetNutritionalRequirements() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
+
         Hamper hamper = new hamepr(expectedNutritionalItemsFamily);
         NutritionalItems expectedNutritionalItems = new NutritionalItems(10,20,30,40,500);
         hamper.setNutritionalRequirements(expectedNutritionalItems);
@@ -115,9 +135,12 @@ public class HamperClassTest {
 
     /**
      *   test for getFoodItems():ArrayList<Food>
+     *   createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     *   specific family with percentage form.
      */
     @Test
     public void testGetFoodItems() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
 
         Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         ArrayList<Food> actualFoodItems = hamper.getFoodItems();
@@ -127,9 +150,12 @@ public class HamperClassTest {
 
     /**
      *  test for setFoodItems(foodItems: ArrayList<Food>)
+     *  createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     *  specific family with percentage form.
      */
     @Test
     public void testSetFoodItems() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
 
         Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         Food apple = new Food(100,"Apple",10,20,30,40,500);
@@ -175,9 +201,12 @@ public class HamperClassTest {
      * test for getIsFilled(): boolean
      * which indicates this hamper can be filled(meet nutrition requirement) with current foods in inventory
      * and, it's default value is False
+     * createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     * specific family with percentage form.
      */
     @Test
     public void testGetIsFilled() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
         Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         boolean actualIsFilled = hamper.getIsFilled();
         assertTrue("getIsFilled() was not returned correct value ",actualIsFilled);
@@ -186,9 +215,12 @@ public class HamperClassTest {
     /**
      *  test for setIsFilled(status: boolean)
      *  default value of isFilled is False
+     *  createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
+     *  specific family with percentage form.
      */
     @Test
     public void testSetIsFilled() {
+        NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
         Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         hamper.setIsFilled(true);
         boolean actualIsFilled = hamper.getIsFilled();
@@ -200,87 +232,130 @@ public class HamperClassTest {
      *  this method attempt to fill the foodItems in hamper class with most efficient way that meets nutritional requirements.
      *  if it successfully calculated best food combination with exist foods it should update the inventory and change
      *  isFilled status to true
-     *  however, if it unable to find combination of foods due to out of stock of foods in inventory, it should not
+     *  however, if it is unable to find combination of foods due to out of stock of foods in inventory, it should not
      *  update the inventory and change isFilled status to false
      */
 
+    /*
+     *  we need a clear definition of "efficient hamper" to test this method
+     *  1. find set of foods that have maximum of +20% of each nutrition's per family  Y1/N1
+     *
+     *  Y1. find set that have minimum quantity of foods (hamper filled)
+     *      *** if it has to be the most efficient we must compare every
+     *      single sets and check % diff here to confirm hamper ***
+     *
+     *  N1. if we could not find set that fit in maximum of 20% range, then find set that exceed 20% Y2/N2
+     *
+     *  Y2. set that exceed 20% food set (hamper filled)
+     *      *** if it has to be the most efficient we must compare every
+     *      single sets and check % diff here to confirm hamper ***
+     *
+     *  N2. could not find food set (hamper is not filled)
+     */
+
     /**
-     * setInventory req
+     *  testCalcBestHamperWithEnoughFoods() is test when the inventory have enough foods
      */
     @Test
     public void testCalcBestHamperWithEnoughFoods() {
 
-
-        NutritionalItems assumedNutritionalRequirementsForFamily = new NutritionalItems(15,20,27,38,6000); //900,1200,1620,2280
+        NutritionalItems assumedNutritionalRequirementsForFamily = new NutritionalItems(10,10,10,70,1000); //100,100,100,700
         Hamper hamper = new Hamper(assumedNutritionalRequirementsForFamily);
+        // ex)  NutritionalItems(15,20,20,35,1000)
+        //      min nutrition  = 100,100,100,700
+        //      min +20% range = 120,120,120,840
 
-        /**
-         *  we need a definition of efficient hamper to test this method
-         *  1. find set of foods that have maximum of +20% of each nutrition's per family  Y1/N1
-         *
-         *  Y1. find set that have minimum quantity of foods (hamper filled) ** if it has to be the most efficient we must compare every
-         *      single sets and check % diff here to confirm hamper
-         *
-         *  N1. if we could not find set that fit in maximum of 20% range, then find set that exceed 20% Y2/N2
-         *
-         *  Y2. set that exceed 20% food set (hamper filled) ** if it has to be the most efficient we must compare every
-         *      single sets and check % diff here to confirm hamper
-         *
-         *  N2. could not find food set (hamper is not filled)
-         */
-        // ex)  NutritionalItems(15,20,27,38,6000)
-        //      min nutrition  = 900,1200,1620,2280
-        //      min +20% range = 1080,1440,1944,2736
-        //      apple = 70,140,210,280
-        //      orange = 0,0,330,670
-        //      grape = 1125,0,21,60
-        //      tuna = 620,1160,220,0
+        //      apple =  10,10,10,70,300   --> 30,30,30,210   *3
+        //      orange = 70,10,10,10,300   --> 210,30,30,30   *1
+        //      grape =  10,10,10,70,100   --> 10,10,10,70    *1
+        //      tuna =   10,10,10,70,500   --> 50,50,50,350   *2
 
-        // one possible sets =
-
-
-        minWholeGrains = (15/100)*6000;
-        minFruitsVeggies = (20/100)*6000;
-        minProtein = (27/100)*6000;
-        minOther = (38/100)*6000;
+        // few possible sets = 2 apple and 1 tuna --> 110,110,110,770 (1)
+        //                     2 tuna                                 (2)
+        // since (2) needs only 2 foods while (1) requires 3 foods this CalcBestHamperWithEnoughFoods()
+        // must save two tunas into its foodItems array and delete tuna0, and tuna1 from inventory hash map and set is filled true
 
         HashMap<Integer, Food> smallInventory = new HashMap<Food>();
-        Inventory.setInventory = smallInventory;
 
-        Food apple0 = new Food(100,"Apple",10,20,30,40,700); //70,140,210,280
-        Food orange0 = new Food(101,"Orange",0,0,33,67,1000);//0,0,330,670
-        Food grape0 = new Food(102,"Grape",75,0,21,4,1500);  //1125,0,21,60
-        Food tuna0 = new Food(103,"Tuna",31,58,11,0,2000);   //620,1160,220,0
-        Food apple1 = new Food(104,"Apple",10,20,30,40,700);
-        Food orange1 = new Food(105,"Orange",0,0,33,67,1000);
-        Food grape1 = new Food(106,"Grape",75,0,21,4,1500);
-        Food tuna1 = new Food(107,"Tuna",31,58,11,0,2000);
-        Food apple2 = new Food(108,"Apple",10,20,30,40,700);
-        Food orange2 = new Food(109,"Orange",0,0,33,67,1000);
-        Food grape2 = new Food(110,"Grape",75,0,21,4,1500);
-        Food tuna2 = new Food(111,"Tuna",31,58,11,0,2000);
+        Food apple0 = new Food(100,"Apple",10,10,10,70,300);
+        Food orange0 = new Food(101,"Orange",70,10,10,10,300);
+        Food grape0 = new Food(102,"Grape",10,10,10,70,100);
+        Food tuna0 = new Food(103,"Tuna",10,10,10,70,500);
+        Food tuna1 = new Food(104,"Tuna",10,10,10,70,500);
+        Food apple1 = new Food(105,"Apple",10,10,10,70,300);
+        Food apple2 = new Food(106,"Apple",10,10,10,70,300);
 
         smallInventory.put(100, apple0);
         smallInventory.put(101, orange0);
         smallInventory.put(102, grape0);
         smallInventory.put(103, tuna0);
-        smallInventory.put(104, apple1);
-        smallInventory.put(105, orange1);
-        smallInventory.put(106, grape1);
-        smallInventory.put(107, tuna1);
-        smallInventory.put(108, apple2);
-        smallInventory.put(109, orange2);
-        smallInventory.put(110, grape2);
-        smallInventory.put(111, tuna2);
+        smallInventory.put(104, tuna1);
+        smallInventory.put(105, apple1);
+        smallInventory.put(106, apple2);
+
 
         hamper.calcBestHamper();
+        // see if it deletes other foods then tuna0 and tuna1
+        assertEquals("calcBestHamper() deleted wrong foods",apple0,smallInventory.get(100));
+        assertEquals("calcBestHamper() deleted wrong foods",orange0,smallInventory.get(101);
+        assertEquals("calcBestHamper() deleted wrong foods",grape0,smallInventory.get(102));
+        assertEquals("calcBestHamper() deleted wrong foods",apple1,smallInventory.get(105));
+        assertEquals("calcBestHamper() deleted wrong foods",apple2,smallInventory.get(106));
+
+        // see if it deletes food that require to fill hamper
+        assertNull("calcBestHamper() deleted wrong foods",smallInventory.get(103));
+        assertNull("calcBestHamper() deleted wrong foods",smallInventory.get(104));
 
 
+        // see if it fills its foodItems: ArrayList<Food>
+        expectedFoodsinArray0 = hamper.getFoodItems().get(0);
+        expectedFoodsinArray1 = hamper.getFoodItems().get(1);
+        assertEquals("calcBestHamper() filled food array with wrong foods",tuna0, hamper.expectedFoodsinArray0);
+        assertEquals("calcBestHamper() filled food array with wrong foods",tuna1, hamper.expectedFoodsinArray1);
+
+        // see if it set isFilled to true
+        assertTrue("even hamper is filled it did not set isFilled to true", hamper.getIsfilld());
 
     }
 
+    /**
+     *  testCalcBestHamperWithNotEnoughFoods() is test when the inventory have Not enough foods
+     */
     @Test
     public void testCalcBestHamperWithNotEnoughFoods() {
+        NutritionalItems assumedNutritionalRequirementsForFamily = new NutritionalItems(10,10,10,70,1000); //100,100,100,700
+        Hamper hamper = new Hamper(assumedNutritionalRequirementsForFamily);
+        //      min nutrition  = 100,100,100,700
+        //      apple =  10,10,10,70,300   --> 30,30,30,210   *1
+        //      orange = 70,10,10,10,300   --> 210,30,30,30   *1
+        //      grape =  10,10,10,70,100   --> 10,10,10,70    *1
+        //      tuna =   10,10,10,70,500   --> 50,50,50,350   *1
+        //      it is not possible to form a hamper with given foods that meets minimum requirement
+
+        Food apple0 = new Food(100,"Apple",10,10,10,70,300);
+        Food orange0 = new Food(101,"Orange",70,10,10,10,300);
+        Food grape0 = new Food(102,"Grape",10,10,10,70,100);
+        Food tuna0 = new Food(103,"Tuna",10,10,10,70,500);
+
+        smallInventory.put(100, apple0);
+        smallInventory.put(101, orange0);
+        smallInventory.put(102, grape0);
+        smallInventory.put(103, tuna0);
+
+        hamper.calcBestHamper();
+
+        // see if it deletes foods even hamper cannot be filled (which should not)
+        assertEquals("calcBestHamper() deleted foods when hamper could not filled",apple0,smallInventory.get(100));
+        assertEquals("calcBestHamper() deleted foods when hamper could not filled",orange0,smallInventory.get(101));
+        assertEquals("calcBestHamper() deleted foods when hamper could not filled",grape0,smallInventory.get(102));
+        assertEquals("calcBestHamper() deleted foods when hamper could not filled",tuna0,smallInventory.get(100));
+
+        // see if it fills its foodItems: ArrayList<Food> even hamper cannot be filled (which should not)
+        assertEquals("calcBestHamper() filled its array of foods when hamper could not filled", 0,
+                hamper.getFoodItems().size());
+
+        // see if it set isFilled is still false
+        assertFalse("even hamper cannot be filled, the status is true", hamper.getIsfilld());
 
     }
 
