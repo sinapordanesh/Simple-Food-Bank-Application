@@ -68,6 +68,7 @@ public class HamperClassTest {
      * check object created successfully or not.
      * createNutritionalItemsForFamily() is the helper method that create weekly nutritional requirements for
      * specific family with percentage form.
+     *
      */
     @Test
     public void testFamilyClassConstructor() {
