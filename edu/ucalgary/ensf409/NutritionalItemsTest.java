@@ -9,7 +9,7 @@ import java.util.*;
  @author Noureldin Amer <a href="mailto: Noureldin.amer@ucalgary.ca">
  noureldin.amer@ucalgary.ca</a>
  @UCID 30119675
- @version 1.1
+ @version 1.2
  @since 1.0
  */
 
@@ -39,9 +39,9 @@ public class NutritionalItemsTest {
         + "is null: ", newNutritionalItems);
     }
 
-    /* 
-    PercentageToCalories() calculates the calories required for the Wholegrains,
-    FruitVeggies, Protien and Other, rounds them down if not integer
+    /**
+     * PercentageToCalories() calculates the calories required for the Wholegrains,
+     * FruitVeggies, Protien and Other, rounds them down if not integer
      */
     @Test
     public void testPercentageToCalories()
@@ -56,14 +56,11 @@ public class NutritionalItemsTest {
 
 
     }
-    
-    //does not have purpose, will revise later
-    public void testCaloriesToPercentages()
-    {
 
-    }
 
-    //below are tests for setters/getters
+    /**
+     *  test for getter getWholeGrains():int
+     */
     @Test
     public void testGetWholeGrains()
     {
@@ -74,6 +71,9 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     *  test for getter getFruitVeggies():int
+     */
     @Test
     public void testGetFruitVeggies()
     {
@@ -84,6 +84,9 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     *  test for getter getProtien():int
+     */
     @Test
     public void testGetProtien()
     {
@@ -94,6 +97,9 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     *  test for getter getOthers():int
+     */
     @Test
     public void testGetOthers()
     {
@@ -104,6 +110,9 @@ public class NutritionalItemsTest {
         assertEquals("actual values of do not match expected", expected, actual);
     }
 
+    /**
+     *  test for getter getCalories():int
+     */
     @Test
     public void testGetCalories()
     {
