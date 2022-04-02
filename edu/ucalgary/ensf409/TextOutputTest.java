@@ -21,9 +21,9 @@ public class TextOutputTest {
     public final Family[] FAMILIES = new Family[]{FAMILY1, FAMILY2, FAMILY3}; 
     public final Order ORDER = new Order(FAMILIES);
     
-    /* 
-        TextOuput(Order) is called with a variable from class order and outputs
-        it to a txt file, checks if object is created
+    /**
+     * TextOuput(Order) is called with a variable from class order and outputs
+     * it to a txt file, checks if object is created
      */
     @Test
     public void testTextOuput_DefaultConstructor()
@@ -33,8 +33,8 @@ public class TextOutputTest {
         newTextOutput);
     }
 
-    /* 
-        formattedOuput() returns a formatted string
+    /**
+     *    test for formattedOuput() returns a formatted string
      */
     @Test
     public void testFormattedOuput()
@@ -46,8 +46,8 @@ public class TextOutputTest {
         expected, actual);
     }
 
-    /* 
-        getOrder() returns the Order (of type Order)
+    /**
+     * thes for getOrder() returns the Order (of type Order)
      */
     @Test
     public void testGetOrder()
