@@ -2,7 +2,7 @@
  @author Jinsu Kwak <a href="mailto:jinsu.kwak@ucalgary.ca">
  jinsu.kwak@ucalgary.ca</a>
  @UCID 30097737
- @version 1.3
+ @version 1.4
  @since 1.0
  */
 
@@ -177,9 +177,9 @@ public class FamilyClassTest {
     /**
      * test for setters that can set the number of member type in family class
      * setAdultMale(num: int)
-     * setAdultFemale(num: int)       getAdultFemale() : int
-     * setChildOver8(num: int)        getChildOver8() : int
-     * setChildUnder8(num: int)       getChildUnder8() : int
+     * setAdultFemale(num: int)
+     * setChildOver8(num: int)
+     * setChildUnder8(num: int)
      */
     @Test
     public void testSetterForMembersInFamilyClass() {
