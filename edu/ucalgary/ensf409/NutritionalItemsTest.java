@@ -9,7 +9,7 @@ import java.util.*;
  @author Noureldin Amer <a href="mailto: Noureldin.amer@ucalgary.ca">
  noureldin.amer@ucalgary.ca</a>
  @UCID 30119675
- @version 1.1
+ @version 1.2
  @since 1.0
  */
 
@@ -40,7 +40,6 @@ public class NutritionalItemsTest {
     }
 
     /**
-     * call NutritionalItems(int, int, int, int, int) with five integer arguments.
      * PercentageToCalories() calculates the calories required for the Wholegrains,
      * FruitVeggies, Protien and Other, rounds them down if not integer
      */
@@ -60,8 +59,7 @@ public class NutritionalItemsTest {
 
 
     /**
-     * call NutritionalItems(int, int, int, int, int) with five integer arguments
-     * getWholeGrains returns the right value and assert if not
+     *  test for getter getWholeGrains():int
      */
     @Test
     public void testGetWholeGrains()
@@ -74,8 +72,7 @@ public class NutritionalItemsTest {
     }
 
     /**
-     * call NutritionalItems(int, int, int, int, int) with five integer arguments
-     * getFruitVeggies returns the right value and assert if not
+     *  test for getter getFruitVeggies():int
      */
     @Test
     public void testGetFruitVeggies()
@@ -88,11 +85,10 @@ public class NutritionalItemsTest {
     }
 
     /**
-     * call NutritionalItems(int, int, int, int, int) with five integer arguments
-     * getProtein returns the right value and assert if not
+     *  test for getter getProtien():int
      */
     @Test
-    public void testGetProtein()
+    public void testGetProtien()
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
@@ -102,8 +98,7 @@ public class NutritionalItemsTest {
     }
 
     /**
-     * call NutritionalItems(int, int, int, int, int) with five integer arguments
-     * getOthers returns the right value and assert if not
+     *  test for getter getOthers():int
      */
     @Test
     public void testGetOthers()
@@ -116,8 +111,7 @@ public class NutritionalItemsTest {
     }
 
     /**
-     * call NutritionalItems(int, int, int, int, int) with five integer arguments
-     * getCalories returns the right value and assert if not
+     *  test for getter getCalories():int
      */
     @Test
     public void testGetCalories()
