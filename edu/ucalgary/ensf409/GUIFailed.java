@@ -5,15 +5,22 @@
  @version 1.0
  @since 1.0
  */
-package edu.ucalgary.ensf409;
 
+// descre
+/// discrptive 
 import java.awt.EventQueue;
+
+//more discrptive message, ex) we are not enough calories due to WG or Protein... ext
+//due to insusficcet inventory
+//
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -21,15 +28,15 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JPanel;
 
-public class GUIFailed {
+public class GUIFailed extends JFrame implements ActionListener, MouseListener {
 
 	private JFrame frame;
-	private static boolean on;
+	private boolean on;
 
 	/**
 	 * Launch the application.
 	 */
-	public static boolean failed() {
+	public static void failed() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -40,7 +47,6 @@ public class GUIFailed {
 				}
 			}
 		});
-		return on;
 	}
 
 	/**
@@ -58,6 +64,7 @@ public class GUIFailed {
 		frame.getContentPane().setBackground(new Color(250, 240, 230));
 		frame.getContentPane().setForeground(new Color(0, 0, 0));
 		frame.setBounds(100, 100, 660, 340);
+		frame.setTitle("Sorry :(");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -87,6 +94,7 @@ public class GUIFailed {
 		JButton btnTryAgain = new JButton("Try Again");
 		btnTryAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				GUIStart1.start();
 			}
 		});
 		btnTryAgain.setFont(new Font("Lantinghei TC", Font.BOLD, 13));
@@ -94,10 +102,55 @@ public class GUIFailed {
 		btnTryAgain.setBounds(449, 224, 91, 62);
 		frame.getContentPane().add(btnTryAgain);
 		
+		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		btnExit.setFont(new Font("Lantinghei TC", Font.BOLD, 13));
 		btnExit.setBackground(Color.LIGHT_GRAY);
 		btnExit.setBounds(542, 224, 91, 62);
 		frame.getContentPane().add(btnExit);
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+	
 }

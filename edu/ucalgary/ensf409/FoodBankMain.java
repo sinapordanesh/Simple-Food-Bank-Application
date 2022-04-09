@@ -5,7 +5,7 @@
  @version 1.0
  @since 1.0
  */
-package edu.ucalgary.ensf409;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,13 +17,15 @@ public class FoodBankMain {
 		 * SQL part 
 		 * connection.... ext..
 		 */
-		
+		/*
 		boolean on = true;
 		boolean success = true;
 		int numOfFamilies = 0;
+		*/
+		//while(on) {
 		
-		while(on) {
-		
+			GUIStart.start();
+/*
 		ArrayList<Family> listOfFamilies = new ArrayList<Family>();
 		numOfFamilies = GUIStart.start();
 		ArrayList<Integer[]> families = GUIFamilyInfo.familyInfo(numOfFamilies);
@@ -46,7 +48,7 @@ public class FoodBankMain {
 		 *  
 		 *  ...
 		 */
-		
+/*		
 		success = order.getPassed();
 		
 		/**
@@ -58,7 +60,7 @@ public class FoodBankMain {
 		 *  ...
 		 *  
 		 */
-
+/*
 		
 		if(success == true) {
 			on = GUISuccess.success(order);  // or TextOutput: text might go as an argument so we can text.forrmattedString for GUI
@@ -67,8 +69,8 @@ public class FoodBankMain {
 			on = GUIFailed.failed();
 		}
 		
-		
+*/		
 		}
-	}
+	//}
 
 }
