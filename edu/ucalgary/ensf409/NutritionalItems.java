@@ -33,10 +33,10 @@ public class NutritionalItems {
         return actualCalories;
     }
 
-    public double getWholeGrains(){ return this.WHOLEGRAINS; }
-    public double getFruitVeggies(){ return this.FRUITVEGGIES; }
-    public double getProtein(){ return this.PROTEIN; }
-    public double getOthers(){ return this.OTHERS; }
-    public double getCalorie(){ return this.CALORIE; }
+    public double getWholeGrains() {return this.WHOLEGRAINS;}
+    public double getFruitVeggies() {return this.FRUITVEGGIES;}
+    public double getProtein() {return this.PROTEIN;}
+    public double getOthers() {return this.OTHERS;}
+    public double getCalorie() {return this.CALORIE;}
 
 }
