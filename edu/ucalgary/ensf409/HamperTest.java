@@ -298,7 +298,7 @@ public class HamperTest {
         hamper.calcBestHamper();
         // see if it deletes other foods then tuna0 and tuna1
         assertEquals("calcBestHamper() deleted wrong foods",apple0,smallInventory.get(100));
-        assertEquals("calcBestHamper() deleted wrong foods",orange0,smallInventory.get(101);
+        assertEquals("calcBestHamper() deleted wrong foods",orange0,smallInventory.get(101));
         assertEquals("calcBestHamper() deleted wrong foods",grape0,smallInventory.get(102));
         assertEquals("calcBestHamper() deleted wrong foods",apple1,smallInventory.get(105));
         assertEquals("calcBestHamper() deleted wrong foods",apple2,smallInventory.get(106));
