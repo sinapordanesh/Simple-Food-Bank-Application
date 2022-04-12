@@ -6,7 +6,7 @@
  @since 1.0
  */
 
-
+package edu.ucalgary.ensf409;
 import java.util.ArrayList;
 import java.util.Iterator;
 public class FoodBankMain {

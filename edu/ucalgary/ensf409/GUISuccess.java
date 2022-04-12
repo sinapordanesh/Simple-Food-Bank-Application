@@ -6,7 +6,7 @@
  @since 1.0
  */
 
-
+package edu.ucalgary.ensf409;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

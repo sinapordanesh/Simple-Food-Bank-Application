@@ -7,7 +7,9 @@
  */
 
 // descre
-/// discrptive 
+/// discrptive
+
+package edu.ucalgary.ensf409;
 import java.awt.EventQueue;
 
 //more discrptive message, ex) we are not enough calories due to WG or Protein... ext
