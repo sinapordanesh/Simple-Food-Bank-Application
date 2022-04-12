@@ -4,6 +4,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,7 +33,7 @@ public class InventoryTest {
         //add to the static hash map
         Inventory.inventory.put(12, expectedFoodObject);
         //get from static hash map
-        Food realFoodObject = Inventory.inventpry.get(12);
+        Food realFoodObject = Inventory.inventory.get(12);
 
         assertSame("Inventory hash map wasn't updated properly as an static parameter!", expectedFoodObject, realFoodObject);
 
@@ -47,7 +48,7 @@ public class InventoryTest {
         Food expectedFoodObject = new Food(12, "apple", 0, 30, 0, 70, 1000);
 
         //add to the static hash map
-        Inventory.removedItems.put(expectedFoodObject);
+        Inventory.removedItems.add(expectedFoodObject);
         //get from static hash map
         Food realFoodObject = Inventory.removedItems.get(0);
 
@@ -64,6 +65,7 @@ public class InventoryTest {
         // this test needs an SQL object which we dont have it now. I'll add one later.
 
         boolean throwException = false;
+        SQL sql = new SQL("jdbc:mysql://localhost/inventory", "student", "ensf");
 
         // sql is a wrong object
         try {
@@ -71,6 +73,8 @@ public class InventoryTest {
 
         }catch (IllegalArgumentException e){
             throwException = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         assertTrue("Inventory constructor did not throw an IllegalArgumentException when given an invalid SQL as its argument!", throwException);
