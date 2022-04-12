@@ -23,7 +23,8 @@ public class NutritionalItems {
 
     // different input and output variable type compare to UML
     // but I prefer this version
-    private double[] percentageToCalories() {
+    // since this method changed into public this has to be tested in future test codes
+    public double[] percentageToCalories() {
         double[] actualCalories = new double[5];
         actualCalories[0] = (WHOLEGRAINS/100)*CALORIE;
         actualCalories[1] = (FRUITVEGGIES/100)*CALORIE;

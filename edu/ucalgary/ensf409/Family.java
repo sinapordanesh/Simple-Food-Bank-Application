@@ -8,20 +8,23 @@
 
 package edu.ucalgary.ensf409;
 
+//familyNumber added
 public class Family {
     private int adultMale;
     private int adultFemale;
     private int childOver8;
     private int childUnder8;
+    private int familyNumber;
     private NutritionalItems individualWeeklyNutritionalNeeds;
     private Hamper hamper;
 
     //UML arguments name should be changed
-    public Family( int numAdultMale, int numAdultFemale, int numChildOver8, int numChildUnder8 ){
+    public Family( int numAdultMale, int numAdultFemale, int numChildOver8, int numChildUnder8, int familyNumber ){
         this.adultMale = numAdultMale;
         this.adultFemale = numAdultFemale;
         this.childOver8 = numChildOver8;
         this.childUnder8 = numChildUnder8;
+        this.familyNumber = familyNumber;
 
         calcIndividualWeeklyNutritionalNeeds();
         this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds);
