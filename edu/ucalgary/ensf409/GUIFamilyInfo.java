@@ -105,7 +105,8 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 		btnNewButton.setBounds(505, 173, 77, 97);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("Please enter the number of each family memeber type for single family");
+		JLabel lblNewLabel_1 = new JLabel("Please enter the number of each family " +
+				"memeber type for single family");
 		lblNewLabel_1.setFont(new Font("Lantinghei TC", Font.PLAIN, 13));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(19, 77, 487, 39);
@@ -262,7 +263,8 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 			families.add(members);
 			
 			if(familyID == this.numberOfFamilies) {
-				JOptionPane.showMessageDialog(this, "Creating Hampers for "+familyID+" families");
+				JOptionPane.showMessageDialog(this, "Creating Hampers for "+familyID
+						+" families");
 				
 				ArrayList<Family> listOfFamilies = new ArrayList<Family>();
 				Iterator<Integer[]> iter = families.iterator();
@@ -276,7 +278,8 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 				this.success = order.getPassed();
 				this.frame.setVisible(false);
 				if(success == true) {
-					GUISuccess.success(order);  // or TextOutput: text might go as an argument so we can text.forrmattedString for GUI
+					GUISuccess.success(order);  // or TextOutput: text might go as an argument so we can
+												// text.forrmattedString for GUI
 					
 				} else {
 					GUIFailed.failed();
@@ -291,7 +294,8 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 		boolean allInputValid = true;
 		
 		if(numAdultMale.isEmpty()||numAdultFemale.isEmpty()||numChildOver8.isEmpty()||numChildUnder8.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "You have entered empty string, please try again");
+			JOptionPane.showMessageDialog(this, "You have entered empty string, " +
+					"please try again");
 			return false;
 		}
 		

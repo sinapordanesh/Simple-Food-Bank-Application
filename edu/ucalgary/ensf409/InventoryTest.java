@@ -18,29 +18,32 @@ import java.util.HashMap;
 
 public class InventoryTest {
 
-    //in this test, I won't be able to test constructor, as we don't have access to the SQL class yet.
 
     Food food = new Food(12, "apple", 0, 30, 0, 70, 1000);
 
     /**
-     *  Inventory Static HashMap is called to check whether is acting as a static parameter or not.
+     *  Inventory Static HashMap is called to check whether is acting as
+     *  a static parameter or not.
      */
     @Test
     public void testInventoryHashMapIsStatic(){
 
-        Food expectedFoodObject = new Food(12, "apple", 0, 30, 0, 70, 1000);
+        Food expectedFoodObject = new Food(12, "apple",
+                0, 30, 0, 70, 1000);
 
         //add to the static hash map
         Inventory.inventory.put(12, expectedFoodObject);
         //get from static hash map
         Food realFoodObject = Inventory.inventory.get(12);
 
-        assertSame("Inventory hash map wasn't updated properly as an static parameter!", expectedFoodObject, realFoodObject);
+        assertSame("Inventory hash map wasn't updated properly as an static parameter!"
+                , expectedFoodObject, realFoodObject);
 
     }
 
     /**
-     * RemovedItems Static ArrayList is called to check whether is acting as a static parameter or not.
+     * RemovedItems Static ArrayList is called to check whether is acting
+     * as a static parameter or not.
      */
     @Test
     public void testRemovedItemsArrayListIsStatic(){
@@ -52,7 +55,8 @@ public class InventoryTest {
         //get from static hash map
         Food realFoodObject = Inventory.removedItems.get(0);
 
-        assertSame("RemovedItems hash map wasn't updated properly as an static parameter!", expectedFoodObject, realFoodObject);
+        assertSame("RemovedItems hash map wasn't updated properly as an static parameter!"
+                , expectedFoodObject, realFoodObject);
     }
 
 
@@ -77,7 +81,8 @@ public class InventoryTest {
             e.printStackTrace();
         }
 
-        assertTrue("Inventory constructor did not throw an IllegalArgumentException when given an invalid SQL as its argument!", throwException);
+        assertTrue("Inventory constructor did not throw an IllegalArgumentException" +
+                " when given an invalid SQL as its argument!", throwException);
     }
 
     /**
@@ -118,6 +123,7 @@ public class InventoryTest {
             expectedResult = true;
         }
 
-        assertTrue("InventoryIsEmpty methos is not returning the appropriate boolean value!", expectedResult);
+        assertTrue("InventoryIsEmpty methos is not returning the appropriate" +
+                " boolean value!", expectedResult);
     }
 }

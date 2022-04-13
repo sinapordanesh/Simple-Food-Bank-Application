@@ -104,8 +104,6 @@ public class Hamper {
                 Inventory.inventory.remove(deletedFoodId);
             }
         }
-
-
     }
 
     /**

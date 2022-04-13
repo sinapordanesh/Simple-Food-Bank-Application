@@ -1,6 +1,5 @@
 package edu.ucalgary.ensf409;
 
-import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,14 +9,14 @@ public class Inventory {
 
     public static HashMap<Integer, Food> inventory;
     public static ArrayList<Food> removedItems;
-    private final SQL DATABASE;
+    private static SQL database;
 
     /**
      * constructor for the inventory class which calls an SQL class.
      * @param data
      */
     Inventory(SQL data) throws SQLException {
-        DATABASE = data;
+        database = data;
 
         try{
             ResultSet resultSet = data.getTable("AVAILABLE_FOOD");
@@ -53,11 +52,11 @@ public class Inventory {
      * after a successful order.
      * @return, boolean to show the process completed
      */
-    public boolean updateInventory(){
+    public static boolean updateInventory(){
 
         try {
             for (Food food: removedItems){
-                DATABASE.deleteItem("AVAILABLE_FOOD", food.getItemId());
+                database.deleteItem("AVAILABLE_FOOD", food.getItemId());
             }
             return true;
         } catch (Exception e){

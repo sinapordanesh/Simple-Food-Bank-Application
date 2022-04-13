@@ -34,7 +34,8 @@ public class OrderTest {
 
     private Order order = new Order(families);
 
-    private ArrayList<Food> foodItems = new ArrayList<>(Arrays.asList(new Food(12, "apple", 0, 30, 0, 70, 1000),
+    private ArrayList<Food> foodItems = new ArrayList<>(Arrays.asList(new Food(12,
+                    "apple", 0, 30, 0, 70, 1000),
             new Food(23, "fish", 70 , 0, 30, 0, 1000)));
 
     private HashMap<Integer, Food> inventory = new HashMap<Integer, Food>() {{
@@ -95,7 +96,8 @@ public class OrderTest {
     public void testErrorMessaging(){
 
         StringBuilder expectedMessage = new StringBuilder();
-        expectedMessage.append("Order failed!").append("\n").append("There is not enough food on the inventory. Please try another order, or exit.";
+        expectedMessage.append("Order failed!").append("\n").append("There is not enough" +
+                " food on the inventory. Please try another order, or exit.";
 
         order.setPassed(false);
         String realMessage = order.errorMessaging();
@@ -141,7 +143,7 @@ public class OrderTest {
 
         //hamper initialization
         Hamper hamper = new Hamper(nutritionalItems);
-        hamper.setFoodItems = expectedFoodList;
+        hamper.setFoodItems(expectedFoodList);
         testFamily[0].setHamper(hamper);
 
         //initialize the order by family array
@@ -172,8 +174,10 @@ public class OrderTest {
         // the passed parameter on the Order should return True.
 
         boolean expectedPassedValue = true;
+        ArrayList<Food> expectedFoodList = this.foodItems;
 
-        Family[] testFamily = {new Family(1, 2, 0, 0)};
+        Family[] testFamily = {new Family(1, 2, 0,
+                0, 1)};
 
         //to initialize the hamper, we need NutritionalItems
         NutritionalItems nutritionalItems = new NutritionalItems(
@@ -181,7 +185,7 @@ public class OrderTest {
 
         //hamper initialization
         Hamper hamper = new Hamper(nutritionalItems);
-        hamper.setFoodItems = expectedFoodList;
+        hamper.setFoodItems(expectedFoodList);
         testFamily[0].setHamper(hamper);
 
         //initialize the order by family array
@@ -190,7 +194,7 @@ public class OrderTest {
         //the value of passed will be determined based on the isFilled property of
         // each hamper after calling calcHampers on the Order class
         order.calcHampers();
-        boolean realPassedVallue = order.getPassed;
+        boolean realPassedVallue = order.getPassed();
 
         assertEquals("The passed value is not true which shows hamper isn't " +
                 "suitable for the order, althiugh it is. so, there is somthing wring!",
@@ -206,12 +210,12 @@ public class OrderTest {
     public void testSetFamiliesArrayList(){
 
         boolean isSet = true;
-        ArrayList<Family> expectedFamilyArratList = {
-                new Family(1, 2, 1, 2),
-                new Family(2, 1, 1, 0)
-        };
-        this.families.setFamilies(expectedFamilyArratList);
-        ArrayList<Family> realFamiliesArrayList = this.families.getFamilies();
+        ArrayList<Family> expectedFamilyArratList = new ArrayList<>();
+        expectedFamilyArratList.add(new Family(1, 2, 1, 2, 1));
+        expectedFamilyArratList.add(new Family(2, 1, 1, 0, 2));
+
+        this.order.setFamilies(expectedFamilyArratList);
+        ArrayList<Family> realFamiliesArrayList = this.order.getFamilies();
 
         for (int i = 0; i < expectedFamilyArratList.size(); i++){
             if (expectedFamilyArratList.get(i) != realFamiliesArrayList.get(i)){
@@ -231,12 +235,12 @@ public class OrderTest {
     @Test
     public void testAddFamilyObjectToTheFamiliesArrayList(){
 
-        Family addedFamily = new Family(1, 1, 3, 1);
-        this.families.addFamily(addedFamily);
+        Family addedFamily = new Family(1, 1, 3, 1, 1);
+        this.order.addFamily(addedFamily);
 
         //comparing the added Family by the last object on the Families ArrayList
         assertSame("The new Family object is not added properly",
-                addedFamily, families.getFamilies.get(families.getFamilied.size() - 1));
+                addedFamily, order.getFamilies().get(order.getFamilies().size() - 1));
 
     }
 
@@ -248,10 +252,9 @@ public class OrderTest {
     public void testSetTotalFoodItemsArrayList(){
         boolean isSet = true;
         //define a new food list
-        ArrayList<Food> expectedFoodItems = {
-                new Food(1, "zucchini", 150, 40, 300, 450, 250),
-                new Food(2, "eggs", 330, 280, 0, 50, 100),
-        };
+        ArrayList<Food> expectedFoodItems = new ArrayList<>();
+        expectedFoodItems.add(new Food(1, "zucchini", 15, 0, 40, 45, 2500));
+        expectedFoodItems.add(new Food(2, "eggs", 33, 28, 0, 39, 1000));
 
         //set new food list
         this.order.setTotalFoodItems(expectedFoodItems);
@@ -279,7 +282,7 @@ public class OrderTest {
         boolean expectedPassedSet = true;
 
         this.order.setPassed(true);
-        boolean realPassed = this.getPassed();
+        boolean realPassed = this.order.getPassed();
 
         assertEquals("The Passed parameter is not set properly",
                 expectedPassedSet, realPassed);
@@ -305,20 +308,21 @@ public class OrderTest {
         NutritionalItems nutritionalItems1 = new NutritionalItems(
                 150, 0, 350, 0, 550);
         NutritionalItems nutritionalItems2 = new NutritionalItems(
-                0, 250, 0, 450, 0);
+                0, 250, 0, 450, 1000);
 
 
         //hampers initialization
-        Hamper hamper1 = new Hamper(nutritionalItems);
-        Hamper hamper2 = new Hamper(nutritionalItems);
+        Hamper hamper1 = new Hamper(nutritionalItems1);
+        Hamper hamper2 = new Hamper(nutritionalItems2);
 
         //set hampers isFilled = true
         hamper1.setIsFilled(true);
         hamper2.setIsFilled(true);
 
         //initialize two sample families
-        Family family1 = new Family(1, 1, 0, 0);
-        Family family2 = new Family(2, 0, 0, 1);
+        Family family1 = new Family(1, 1, 0, 0, 1);
+        Family family2 = new Family(2, 0, 0, 1, 2);
+        //set nutritional need for each family (for a week)
 
         //set families hampers
         family1.setHamper(hamper1);
@@ -328,8 +332,8 @@ public class OrderTest {
         Family[] families = {family1, family2};
         Order order = new Order(families);
 
-        order.calcHamper();
-        boolean realIsPassed = order.getIsPassed();
+        order.calcHampers();
+        boolean realIsPassed = order.getPassed();
 
         assertEquals("We expected the hamper were filled properly and" +
                 " return isFilled as true value to pass the whole order," +
@@ -364,16 +368,16 @@ public class OrderTest {
 
 
         //hampers initialization
-        Hamper hamper1 = new Hamper(nutritionalItems);
-        Hamper hamper2 = new Hamper(nutritionalItems);
+        Hamper hamper1 = new Hamper(nutritionalItems1);
+        Hamper hamper2 = new Hamper(nutritionalItems2);
 
         //set hampers isFilled = true
         hamper1.setIsFilled(true);
         hamper2.setIsFilled(true);
 
         //initialize two sample families
-        Family family1 = new Family(1, 1, 0, 0);
-        Family family2 = new Family(2, 0, 0, 1);
+        Family family1 = new Family(1, 1, 0, 0, 1);
+        Family family2 = new Family(2, 0, 0, 1, 2);
 
         //set families hampers
         family1.setHamper(hamper1);
@@ -383,8 +387,8 @@ public class OrderTest {
         Family[] families = {family1, family2};
         Order order = new Order(families);
 
-        order.calcHamper();
-        boolean realIsPassed = order.getIsPassed();
+        order.calcHampers();
+        boolean realIsPassed = order.getPassed();
 
         assertEquals("We expected one or more hampers failed on " +
                 "filling properly and return isFilled as false value which " +
