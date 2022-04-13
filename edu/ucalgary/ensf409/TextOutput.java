@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TextOutput implements TextFile {
-    private final ORDER;
+    private final Order ORDER;
     
     public TextOutput(Order order)
     {
@@ -14,9 +14,10 @@ public class TextOutput implements TextFile {
     }
 
     //returns formattedOutput (String from array)
+    /* 
     public String formattedOutput()
     {
-        ArrayList<String> foodList = Order.getTotalFoodItems();
+        ArrayList<String> foodList = ORDER.getTotalFoodItems();
         String formattedOutput = "";
 
         for(String food : foodList)
@@ -24,7 +25,7 @@ public class TextOutput implements TextFile {
             formattedOutput += food + 'n';
         }
     }
-
+ */
     //Order getter
     public Order getOrder()
     {
@@ -32,10 +33,11 @@ public class TextOutput implements TextFile {
     }
 
     @Override
-    default public void generateFile(String outputFileName) //ie including .txt
+    public void generateFile(String outputFileName) //ie including .txt
     {
+        
         try {
-            BufferedWriter wr = new BufferedWriter(new FileWriter(output));
+            BufferedWriter wr = new BufferedWriter(new FileWriter(outputFileName));
             wr.write("Food BanK \n" + "Hamoer Order Form \n \n" + "Name:\nDate:\n"
             + "\n Original Request \n" );
             
@@ -44,7 +46,7 @@ public class TextOutput implements TextFile {
 
             for(i = 0; i < families.size(); i++)
             {
-                Family family = families[i];
+                Family family = families.get(i);
                 String adultMale;
                 String adultFemale;
                 String over8;
@@ -81,18 +83,17 @@ public class TextOutput implements TextFile {
             
             for(int j = 0; j < families.size(); j++)
             {
-                Family family = families[j];
+                Family family = families.get(j);
                 Hamper hamper = family.getHamper();
                 ArrayList<Food> foodItems= hamper.getFoodItems();
                 wr.write("Hamper " + j+1 + "items:\n");
                 for(int k = 0; k < foodItems.size(); k ++)
                 {
-                    Food foodItem = foodItems[k];
+                    Food foodItem = foodItems.get(k);
                     wr.write(foodItem.getItemId() + "\t" + foodItem.getName() + "\n");
                 }
                 wr.write("\n\n"); //skip 2 lines
             }
-            wr.close();
 
         } catch (IOException e) {
             System.out.println("Cannot create output file");

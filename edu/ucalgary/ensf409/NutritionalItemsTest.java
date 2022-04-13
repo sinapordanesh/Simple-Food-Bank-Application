@@ -49,8 +49,8 @@ public class NutritionalItemsTest {
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
-        int excpected[] = new int[] {400, 700, 650, 750};
-        int actuals[] = new int[4];
+        int excpected[] = new int[] {400, 700, 650, 750, 2500};
+        int actuals[] = new int[5];
         actuals = newNutritionalItems.percentageToCalories();
         assertArrayEquals("actual values of do not match expected", excpected, 
         actuals);
