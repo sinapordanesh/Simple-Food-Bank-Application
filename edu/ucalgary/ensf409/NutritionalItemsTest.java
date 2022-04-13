@@ -68,9 +68,9 @@ public class NutritionalItemsTest {
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
-        int expected = 16;
-        int actual = newNutritionalItems.getWholeGrains();
-        assertEquals("actual values of do not match expected", expected, actual);
+        double expected = 16;
+        double actual = newNutritionalItems.getWholeGrains();
+        assertEquals("actual values of do not match expected", expected, actual, 0);
     }
 
     /**
@@ -82,9 +82,9 @@ public class NutritionalItemsTest {
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
-        int expected = 28;
-        int actual = newNutritionalItems.getFruitVeggies();
-        assertEquals("actual values of do not match expected", expected, actual);
+        double expected = 28;
+        double actual = newNutritionalItems.getFruitVeggies();
+        assertEquals("actual values of do not match expected", expected, actual, 0);
     }
 
     /**
@@ -96,9 +96,9 @@ public class NutritionalItemsTest {
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
-        int expected = 26;
-        int actual = newNutritionalItems.getProtien();
-        assertEquals("actual values of do not match expected", expected, actual);
+        double expected = 26;
+        double actual = newNutritionalItems.getProtein();
+        assertEquals("actual values of do not match expected", expected, actual, 0);
     }
 
     /**
@@ -110,9 +110,9 @@ public class NutritionalItemsTest {
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
-        int expected = 30;
-        int actual = newNutritionalItems.getOthers();
-        assertEquals("actual values of do not match expected", expected, actual);
+        double expected = 30;
+        double actual = newNutritionalItems.getOthers();
+        assertEquals("actual values of do not match expected", expected, actual, 0);
     }
 
     /**
@@ -124,8 +124,8 @@ public class NutritionalItemsTest {
     {
         NutritionalItems newNutritionalItems = new NutritionalItems(16, 28, 26,
         30, 2500);
-        int expected = 2500;
-        int actual = newNutritionalItems.getCalories();
-        assertEquals("actual values of do not match expected", expected, actual);
+        double expected = 2500;
+        double actual = newNutritionalItems.getCalories();
+        assertEquals("actual values of do not match expected", expected, actual, 0);
     }
 }

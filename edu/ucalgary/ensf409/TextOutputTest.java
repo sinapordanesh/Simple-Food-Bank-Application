@@ -34,20 +34,7 @@ public class TextOutputTest {
         newTextOutput);
     }
 
-    /**
-     * call TextOutput(order) with an Order object
-     * formattedOutput() returns a formatted string
-     */
-    @Test
-    public void testFormattedOuput()
-    {
-        TextOutput newTextOutput = new TextOutput(ORDER);
-        String actual = newTextOutput.formattedOuput();
-        String expected; //not sure how to implement this
-        assertEquals("actual string of do not match expected string", 
-        expected, actual);
-    }
-
+    
     /**
      * call TextOutput(order) with an Order object
      * getOrder() returns the Order (of type Order)
@@ -64,4 +51,3 @@ public class TextOutputTest {
     }
 
     }
-}

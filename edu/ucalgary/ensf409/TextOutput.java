@@ -13,6 +13,7 @@ public class TextOutput implements TextFile {
         this.ORDER = order;
     }
 
+<<<<<<< Updated upstream
     //returns formattedOutput (String from array)
     public String formattedOutput()
     {
@@ -27,6 +28,8 @@ public class TextOutput implements TextFile {
         return formattedOutput;
     }
 
+=======
+>>>>>>> Stashed changes
     //Order getter
     public Order getOrder()
     {
