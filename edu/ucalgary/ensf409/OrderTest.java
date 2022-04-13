@@ -3,6 +3,7 @@ package edu.ucalgary.ensf409;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,19 +25,17 @@ public class OrderTest {
     //Order(Family[]) is called with a Family objects array -> remove if create
     // an Order object here!
     private Family[] families = {
-            new Family(1, 3, 2, 4),
-            new Family(0,2, 3,1),
-            new Family(1, 1, 6, 1),
-            new Family(2, 0, 0, 0),
-            new Family(0, 1, 1, 0)
+            new Family(1, 3, 2, 4, 1),
+            new Family(0,2, 3,1, 2),
+            new Family(1, 1, 6, 1, 3),
+            new Family(2, 0, 0, 0, 4),
+            new Family(0, 1, 1, 0, 5)
     };
 
     private Order order = new Order(families);
 
-    private ArrayList<Food> foodItems = {
-            new Food(12, "apple", 0, 30, 0, 70, 1000),
-            new Food(23, "fish", 70 , 0, 30, 1000),
-    };
+    private ArrayList<Food> foodItems = new ArrayList<>(Arrays.asList(new Food(12, "apple", 0, 30, 0, 70, 1000),
+            new Food(23, "fish", 70 , 0, 30, 0, 1000)));
 
     private HashMap<Integer, Food> inventory = new HashMap<Integer, Food>() {{
         put(12, new Food(12, "apple", 0, 30, 0, 70, 1000));
@@ -79,7 +78,7 @@ public class OrderTest {
 
         Order testOrder;
         try {
-            testOrder = new Order(testWrongObject);
+            testOrder = new Order(testWrongObjects);
         } catch (IllegalArgumentException e) {
             thrown = true;
         }
@@ -95,15 +94,14 @@ public class OrderTest {
     @Test
     public void testErrorMessaging(){
 
-        String expectedMessage = "There is not enough food on the inventory " +
-                "to fill all hampers";
+        StringBuilder expectedMessage = new StringBuilder();
+        expectedMessage.append("Order failed!").append("\n").append("There is not enough food on the inventory. Please try another order, or exit.";
 
-        Order order = new Order({new Family[0, 1, 0, 2]});
         order.setPassed(false);
         String realMessage = order.errorMessaging();
 
         assertEquals("The order class is not properly sending a message when " +
-                "the hamper is not proccessable", testErrorMessage, realMessage);
+                "the hamper is not proccessable", expectedMessage.toString(), realMessage);
 
     }
 
@@ -113,12 +111,9 @@ public class OrderTest {
      */
     @Test
     public void testGetFamiliesArrayList(){
-        ArrayList<Family> expectedFamilyArrayList;
-        for (Family family: families){
-            expectedFamilyArrayList.add(family);
-        }
+        ArrayList<Family> expectedFamilyArrayList = new ArrayList<>(Arrays.asList(families));
 
-        ArrayList<Family> realFamilyArrayList = order.getFamilies;
+        ArrayList<Family> realFamilyArrayList = order.getFamilies();
 
         assertEquals("The Families getter doesnt work properly!",
                 expectedFamilyArrayList, realFamilyArrayList);
@@ -136,9 +131,9 @@ public class OrderTest {
         // one food item list
         boolean equalItems = true;
 
-        ArrayList<Food> expectedFoodList = this.foodItems1;
+        ArrayList<Food> expectedFoodList = this.foodItems;
 
-        Family[] testFamily = {new Family(1, 2, 0, 0)};
+        Family[] testFamily = {new Family(1, 2, 0, 0, 1)};
 
         //to initialize the hamper, we need NutritionalItems
         NutritionalItems nutritionalItems = new NutritionalItems(

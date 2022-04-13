@@ -8,18 +8,40 @@ public class SQL {
     public final String PASSWORD;
     private Connection dbConnection;
 
+    /**
+     * SQL class constructor which needs 3 arguments
+     * @param url
+     * @param user
+     * @param pw
+     */
     SQL(String url, String user, String pw){
         this.DBURL = url;
         this.USERNAME = user;
         this.PASSWORD = pw;
     }
 
+    /**
+     * get the whole needed table and return a Resultset object
+     * to loop through the table later.
+     * @param tableName
+     * @return
+     * @throws SQLException
+     */
     public ResultSet getTable(String tableName) throws SQLException {
         Statement statement = dbConnection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName);
         return resultSet;
     }
 
+    /**
+     * Delete an item from specific table through its id.
+     * Here, we set the function to delete only from
+     * AVAILABLE_FOOD table, as the key name on the query
+     * is based on that table, although we are passing the
+     * table name as an argument.
+     * @param tableName
+     * @param itemId
+     */
     public void deleteItem(String tableName, int itemId){
         try{
             String query = "DELETE FROM " + tableName + " WHERE ItemID = ?";
@@ -32,10 +54,18 @@ public class SQL {
         }
     }
 
+    /**
+     * getter
+     * @return
+     */
     public Connection getDbConnection() {
         return dbConnection;
     }
 
+    /**
+     * setter
+     * @param dbConnection
+     */
     public void setDbConnection(Connection dbConnection) {
         this.dbConnection = dbConnection;
     }

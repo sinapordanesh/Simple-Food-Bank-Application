@@ -109,7 +109,7 @@ public class InventoryTest {
     @Test
     public void testInventoryIsEmpty(){
 
-        boolean expectedResult;
+        boolean expectedResult = false;
 
         //make sure inventory is empty
         Inventory.inventory.clear();
@@ -118,6 +118,6 @@ public class InventoryTest {
             expectedResult = true;
         }
 
-        assertTrue("InventoryIsEmpty methos is not returning the appropriate boolean value!", realResult);
+        assertTrue("InventoryIsEmpty methos is not returning the appropriate boolean value!", expectedResult);
     }
 }

@@ -17,7 +17,7 @@ public class Order {
         StringBuilder result = new StringBuilder("");
 
         if (!this.passed){
-            result.append("Order failed!").append("\n").append("There is not enough food on inventory. Pleae try another order, or exit.");
+            result.append("Order failed!").append("\n").append("There is not enough food on the inventory. Please try another order, or exit.");
         } else {
             result.append("Order was placed successfully").append("\n").append("Please keep going for another order, or exit.");
         }

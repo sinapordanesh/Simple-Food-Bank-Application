@@ -24,7 +24,7 @@ public class FoodTest {
     @Test
     public void testFoodClassConstructor(){
 
-        Food food = new Food(23, "fish", 70 , 0, 30, 1000);
+        Food food = new Food(23, "fish", 70 , 0, 30, 0, 1000);
         assertNotNull("Food constructor did not create an object when given a valid array of log entries.", food);
     }
 
@@ -37,7 +37,7 @@ public class FoodTest {
         boolean throwException = false;
 
         try {
-            Food food = new Food("23", "fish", "70" , 0, 30, 1000);
+            Food food = new Food(23, "fish", 70 , 0, 30, 0, 1000);
         } catch (IllegalArgumentException e){
             throwException = true;
         }
@@ -78,7 +78,7 @@ public class FoodTest {
     @Test
     public void testGetNutritionalItems(){
         NutritionalItems expectedNutritionalItems = new NutritionalItems(10, 20, 30, 40, 1000);
-        Food food = new FoodTest(43, "beef", 10, 20, 30, 40, 1000);
+        Food food = new Food(43, "beef", 10, 20, 30, 40, 1000);
         NutritionalItems realNutritionalItems = food.getNutritionalItems();
 
         assertSame("Method getNutritionaItems did not return the expected object", expectedNutritionalItems, realNutritionalItems);
