@@ -38,6 +38,6 @@ public class NutritionalItems {
     public double getFruitVeggies() {return this.FRUITVEGGIES;}
     public double getProtein() {return this.PROTEIN;}
     public double getOthers() {return this.OTHERS;}
-    public double getCalorie() {return this.CALORIE;}
+    public double getCalories() {return this.CALORIE;}
 
 }

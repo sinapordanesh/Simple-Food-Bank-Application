@@ -1,10 +1,5 @@
-/**
- @author Jinsu Kwak <a href="mailto:jinsu.kwak@ucalgary.ca">
- jinsu.kwak@ucalgary.ca</a>
- @UCID 30097737
- @version 1.0
- @since 1.0
- */
+
+
 
 package edu.ucalgary.ensf409;
 import java.util.ArrayList;

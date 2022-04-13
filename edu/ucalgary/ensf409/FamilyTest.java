@@ -67,7 +67,7 @@ public class FamilyTest {
     @Test
     public void testFamilyClassConstructor() {
 
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8);
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1);
         assertNotNull("Family class was not created", fam);
     }
 
@@ -81,21 +81,21 @@ public class FamilyTest {
     @Test
     public void testWeeklyNutritionalNeedsForFamily() {
         NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8);
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1);
+        fam.calcIndividualWeeklyNutritionalNeeds();
+        NutritionalItems actualNutritionalItems = fam.getIndividualWeeklyNutritionalNeeds();
 
-        NutritionalItems actualNutritionalItems = fam.calcIndividualWeeklyNutritionalNeeds();
+        double actualWholeGrains = actualNutritionalItems.getWholeGrains();
+        double actualFruitVeggies = actualNutritionalItems.getFruitVeggies();
+        double actualProtein = actualNutritionalItems.getProtein();
+        double actualOthers = actualNutritionalItems.getOthers();
+        double actualCalories = actualNutritionalItems.getCalories();
 
-        int actualWholeGrains = actualNutritionalItems.getWholeGrains();
-        int actualFruitVeggies = actualNutritionalItems.getFruitVeggies();
-        int actualProtein = actualNutritionalItems.getProtein();
-        int actualOthers = actualNutritionalItems.getOthers();
-        int actualCalories = actualNutritionalItems.getCalories();
-
-        int expectedWholeGrains = expectedNutritionalItemsFamily.getWholeGrains();
-        int expectedFruitVeggies = expectedNutritionalItemsFamily.getFruitVeggies();
-        int expectedProtein = expectedNutritionalItemsFamily.getProtein();
-        int expectedOthers = expectedNutritionalItemsFamily.getOthers();
-        int expectedCalories = expectedNutritionalItemsFamily.getCalories();
+        double expectedWholeGrains = expectedNutritionalItemsFamily.getWholeGrains();
+        double expectedFruitVeggies = expectedNutritionalItemsFamily.getFruitVeggies();
+        double expectedProtein = expectedNutritionalItemsFamily.getProtein();
+        double expectedOthers = expectedNutritionalItemsFamily.getOthers();
+        double expectedCalories = expectedNutritionalItemsFamily.getCalories();
 
 
         assertEquals("Calculation of calcIndividualWeeklyNutritionalNeeds for WholeGrain was not correct",
@@ -119,7 +119,7 @@ public class FamilyTest {
     @Test
     public void testSetHamper() {
         NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8);
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1);
         Hamper actualHamper = new Hamper(expectedNutritionalItemsFamily);
         fam.setHamper(actualHamper);
         Hamper expectedHamper = fam.getHamper();
@@ -134,7 +134,7 @@ public class FamilyTest {
      */
     @Test
     public void testGetHamper() {
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8);
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1);
         Hamper actualHamper = fam.getHamper();
         assertNotNull("getHamper() does not return Hamper class", actualHamper);
 
@@ -156,7 +156,7 @@ public class FamilyTest {
         int expectedNumChildOver8 = numChildOver8;
         int expectedNumChildUnder8 = numChildUnder8;
 
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8); // original 1,1,1,2
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1); // original 1,1,1,2
         int actualNumAdultMale = fam.getAdultMale();
         int actualNumAdultFemale = fam.getAdultFemale();
         int actualNumChildOver8 = fam.getChildOver8();
@@ -183,7 +183,7 @@ public class FamilyTest {
      */
     @Test
     public void testSetterForMembersInFamilyClass() {
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8,  numChildUnder8); // original 1,1,1,2
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8,  numChildUnder8,1); // original 1,1,1,2
         int expectedNumAdultMale = 3;
         int expectedNumAdultFemale = 2;
         int expectedNumChildOver8 = 1;

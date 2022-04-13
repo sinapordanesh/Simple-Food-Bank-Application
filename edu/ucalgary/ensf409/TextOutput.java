@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TextOutput implements TextFile {
-    private final ORDER;
+    private final Order ORDER;
     
     public TextOutput(Order order)
     {
@@ -16,13 +16,15 @@ public class TextOutput implements TextFile {
     //returns formattedOutput (String from array)
     public String formattedOutput()
     {
-        ArrayList<String> foodList = Order.getTotalFoodItems();
+        ArrayList<Food> foodList = ORDER.getTotalFoodItems();
         String formattedOutput = "";
 
-        for(String food : foodList)
+        for(Food food : foodList)
         {
-            formattedOutput += food + 'n';
+            formattedOutput = Integer.toString(food.getItemId())+"\t"+food.getName()+"\n";
         }
+
+        return formattedOutput;
     }
 
     //Order getter
@@ -32,11 +34,11 @@ public class TextOutput implements TextFile {
     }
 
     @Override
-    default public void generateFile(String outputFileName) //ie including .txt
+    public void generateFile(String outputFileName) //ie including .txt
     {
         try {
-            BufferedWriter wr = new BufferedWriter(new FileWriter(output));
-            wr.write("Food BanK \n" + "Hamoer Order Form \n \n" + "Name:\nDate:\n"
+            BufferedWriter wr = new BufferedWriter(new FileWriter(outputFileName));
+            wr.write("Food Bank \n" + "Hamper Order Form \n \n" + "Name:\nDate:\n"
             + "\n Original Request \n" );
             
             ArrayList <Family> families = ORDER.getFamilies();
@@ -44,11 +46,12 @@ public class TextOutput implements TextFile {
 
             for(i = 0; i < families.size(); i++)
             {
-                Family family = families[i];
+                Family family = families.get(i);
                 String adultMale;
                 String adultFemale;
                 String over8;
                 String under8;
+                int familyId = family.getFamilyId();
 
                 if(family.getAdultMale() == 0)
                 {
@@ -75,19 +78,20 @@ public class TextOutput implements TextFile {
                     under8 = family.getChildUnder8() + " Child Under 8";
                 }
                 
-                wr.write("Hamper " + i+1 + ": " +  adultMale + adultFemale +
+                wr.write("Hamper " + familyId + ": " +  adultMale + adultFemale +
                 over8 + under8 + '\n');
             }
             
             for(int j = 0; j < families.size(); j++)
             {
-                Family family = families[j];
+                Family family = families.get(j);
+                int familyId = family.getFamilyId();
                 Hamper hamper = family.getHamper();
                 ArrayList<Food> foodItems= hamper.getFoodItems();
-                wr.write("Hamper " + j+1 + "items:\n");
+                wr.write("Hamper " + familyId + " Items:\n");
                 for(int k = 0; k < foodItems.size(); k ++)
                 {
-                    Food foodItem = foodItems[k];
+                    Food foodItem = foodItems.get(k);
                     wr.write(foodItem.getItemId() + "\t" + foodItem.getName() + "\n");
                 }
                 wr.write("\n\n"); //skip 2 lines
