@@ -106,6 +106,7 @@ public class Family {
     public int getAdultFemale(){ return this.adultFemale; }
     public int getChildOver8(){ return this.childOver8; }
     public int getChildUnder8(){ return this.childUnder8; }
+    public int getFamilyId(){ return this.familyId; }
     public NutritionalItems getIndividualWeeklyNutritionalNeeds() { return this.individualWeeklyNutritionalNeeds; }
 
     /**
@@ -122,6 +123,7 @@ public class Family {
     public void setAdultFemale( int num ){ this.adultFemale = num; }
     public void setChildOver8( int num ){ this.childOver8 = num; }
     public void setChildUnder8( int num ){ this.childUnder8 = num; }
+    public void setFamilyId( int Id ){ this.familyId = Id; }
     public void setIndividualWeeklyNutritionalNeeds( NutritionalItems individualWeeklyNutritionalNeeds ) {
         this.individualWeeklyNutritionalNeeds = individualWeeklyNutritionalNeeds; }
 }
