@@ -5,6 +5,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ @author Noureldin Amer <a href="mailto: Noureldin.amer@ucalgary.ca">
+ noureldin.amer@ucalgary.ca</a>
+ @UCID 30119675
+ @version 1.1
+ @since 1.0
+ */
+
 public class TextOutput implements TextFile {
     private final Order ORDER;
     
@@ -13,31 +21,19 @@ public class TextOutput implements TextFile {
         this.ORDER = order;
     }
 
-<<<<<<< Updated upstream
-    //returns formattedOutput (String from array)
-    public String formattedOutput()
-    {
-        ArrayList<Food> foodList = ORDER.getTotalFoodItems();
-        String formattedOutput = "";
-
-        for(Food food : foodList)
-        {
-            formattedOutput = Integer.toString(food.getItemId())+"\t"+food.getName()+"\n";
-        }
-
-        return formattedOutput;
-    }
-
-=======
->>>>>>> Stashed changes
     //Order getter
     public Order getOrder()
     {
         return this.ORDER;
     }
 
+    /**
+     * Output formatted String to text file
+     * @param outputFileName : name of text file to output to (inlucing .txt)
+     */
+
     @Override
-    public void generateFile(String outputFileName) //ie including .txt
+    public void generateFile(String outputFileName)
     {
         try {
             BufferedWriter wr = new BufferedWriter(new FileWriter(outputFileName));

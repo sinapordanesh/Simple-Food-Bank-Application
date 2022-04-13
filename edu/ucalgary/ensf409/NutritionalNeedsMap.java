@@ -6,8 +6,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+/**
+ @author Noureldin Amer <a href="mailto: Noureldin.amer@ucalgary.ca">
+ noureldin.amer@ucalgary.ca</a>
+ @UCID 30119675
+ @version 1.1
+ @since 1.0
+ */
+
+/**
+ * Produce a HashMap <String, NutritionalItems>
+ */
+
 public class NutritionalNeedsMap {
-    HashMap <String, NutritionalItems> TABLE; 
+    private HashMap <String, NutritionalItems> TABLE; 
     public NutritionalNeedsMap(Connection dbConnect)
     {
         Statement myStmt;
@@ -39,6 +51,12 @@ public class NutritionalNeedsMap {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
     }
+    
+    /**
+    * Return HashMap <String, NutritionalItems> TABLE
+    */
+    public HashMap<String, NutritionalItems> getTable() {
+            return this.TABLE;
+        }
 }

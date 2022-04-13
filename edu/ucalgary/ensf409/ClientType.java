@@ -1,5 +1,13 @@
 package edu.ucalgary.ensf409;
 
+/**
+ @author Noureldin Amer <a href="mailto: Noureldin.amer@ucalgary.ca">
+ noureldin.amer@ucalgary.ca</a>
+ @UCID 30119675
+ @version 1.1
+ @since 1.0
+ */
+
 public enum ClientType {
     ADULTMALE, ADULTFEMALE, CHILDOVER8, CHILDUNDER8;
     public NutritionalItems getNutritionalItems(int wG, int fV, int p, int o, int c) {
