@@ -15,9 +15,9 @@ import java.util.*;
  */
 
 public class TextOutputTest {
-    public final Family FAMILY1 = new Family(1,1,1,1);
-    public final Family FAMILY2 = new Family(1,1,1,0);
-    public final Family FAMILY3 = new Family(1,0,1,0);
+    public final Family FAMILY1 = new Family(1,1,1,1, 1);
+    public final Family FAMILY2 = new Family(1,1,1,0, 2);
+    public final Family FAMILY3 = new Family(1,0,1,0, 3);
     public final Family[] FAMILIES = new Family[]{FAMILY1, FAMILY2, FAMILY3}; 
     public final Order ORDER = new Order(FAMILIES);
     
@@ -57,7 +57,7 @@ public class TextOutputTest {
     {
         TextOutput newTextOutput = new TextOutput(ORDER);
         Order actual = newTextOutput.getOrder();
-        Stirng expected = ORDER;
+        Order expected = ORDER;
         assertEquals("actual value (of type ORDER) does not equal the actual"
         + "value", expected, actual);
 
