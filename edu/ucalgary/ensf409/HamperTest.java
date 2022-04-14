@@ -105,7 +105,7 @@ public class HamperTest {
     public void testSetNutritionalRequirements() {
         NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
 
-        Hamper hamper = new hamepr(expectedNutritionalItemsFamily);
+        Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         NutritionalItems expectedNutritionalItems = new NutritionalItems(10,20,30,40,500);
         hamper.setNutritionalRequirements(expectedNutritionalItems);
         NutritionalItems actualNutritionalRequirements = hamper.getNutritionalRequirements();
@@ -315,7 +315,7 @@ public class HamperTest {
         assertEquals("calcBestHamper() filled food array with wrong foods",tuna1, hamper.expectedFoodsinArray1);
 
         // see if it set isFilled to true
-        assertTrue("even hamper is filled it did not set isFilled to true", hamper.getIsfilld());
+        assertTrue("even hamper is filled it did not set isFilled to true", hamper.getIsFilled());
 
     }
 

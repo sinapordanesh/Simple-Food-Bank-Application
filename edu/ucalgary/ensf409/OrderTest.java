@@ -97,7 +97,7 @@ public class OrderTest {
 
         StringBuilder expectedMessage = new StringBuilder();
         expectedMessage.append("Order failed!").append("\n").append("There is not enough" +
-                " food on the inventory. Please try another order, or exit.";
+                " food on the inventory. Please try another order, or exit.");
 
         order.setPassed(false);
         String realMessage = order.errorMessaging();
