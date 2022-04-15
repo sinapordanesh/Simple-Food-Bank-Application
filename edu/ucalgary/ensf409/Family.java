@@ -33,7 +33,8 @@ public class Family {
         this.childUnder8 = numCU8;
         this.familyId = familyId;
 
-        calcIndividualWeeklyNutritionalNeeds();
+
+        this.individualWeeklyNutritionalNeeds = calcIndividualWeeklyNutritionalNeeds();
         this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds);
     }
 
@@ -58,7 +59,7 @@ public class Family {
     /**
      *  calculate and stores NutritionalItems:individualWeeklyNutritionalNeeds for this.Family
      */
-    public void calcIndividualWeeklyNutritionalNeeds(){
+    public NutritionalItems calcIndividualWeeklyNutritionalNeeds(){
         double[] actualCalories = new double[5];
 
         for(int i = 0; i < this.adultMale; i++){
@@ -93,7 +94,7 @@ public class Family {
             }
         }
 
-        this.individualWeeklyNutritionalNeeds = CaloriesToPercentage(actualCalories);
+        return CaloriesToPercentage(actualCalories);
     }
 
     /**
