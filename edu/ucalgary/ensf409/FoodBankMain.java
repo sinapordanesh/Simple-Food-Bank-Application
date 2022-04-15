@@ -18,8 +18,8 @@ public class FoodBankMain {
 		sql.initializeConnection();
 		Inventory inventory = new Inventory(sql);
 		NutritionalNeedsMap nutritionalNeedsMap = new NutritionalNeedsMap(sql);
-
-		boolean on = true;
+		GUIStart.start();
+/*		boolean on = true;
 		boolean success = true;
 		int numOfFamilies = 0;
 
@@ -44,18 +44,18 @@ public class FoodBankMain {
 			Order order = new Order(listOfFamilies.toArray());
 			order.calcHampers();
 		
-			/**
+			*//**
 			 *  ...
 			 *
 			 *  Further calculation in Order class
 			 *  DB update... ext..
 			 *
 			 *  ...
-			 */
+			 *//*
 
 			success = order.getPassed();
 
-			/**
+			*//**
 			 * 	...
 			 *
 			 *  TextOutput text = new TextOutput(order)
@@ -63,7 +63,7 @@ public class FoodBankMain {
 			 *
 			 *  ...
 			 *
-			 */
+			 *//*
 
 
 			if(success) {
@@ -72,6 +72,7 @@ public class FoodBankMain {
 			} else {
 				on = GUIFailed.failed();
 			}
-		}
+		}*/
+
 	}
 }
