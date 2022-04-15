@@ -40,8 +40,8 @@ public class FoodBankMain {
 				listOfFamilies.add(family);
 				id++;
 			}
-		
-			Order order = new Order((Family[]) listOfFamilies.toArray());
+
+			Order order = new Order(listOfFamilies.toArray());
 			order.calcHampers();
 		
 			/**
