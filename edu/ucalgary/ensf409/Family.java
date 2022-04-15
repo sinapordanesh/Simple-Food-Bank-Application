@@ -64,7 +64,7 @@ public class Family {
 
         for(int i = 0; i < this.adultMale; i++){
             for(int j = 0; j < 5; j++){
-                NutritionalItems NutritionalNeedsMale = NutritionalNeedsMap.TABLE.get("ADULTMALE");
+                NutritionalItems NutritionalNeedsMale = NutritionalNeedsMap.table.get("ADULTMALE");
                 double[] nutritionForAdultMale = NutritionalNeedsMale.percentageToCalories();
                 actualCalories[j] = actualCalories[j]+nutritionForAdultMale[j];
             }
@@ -72,7 +72,7 @@ public class Family {
 
         for(int i = 0; i < this.adultFemale; i++){
             for(int j = 0; j < 5; j++){
-                NutritionalItems NutritionalNeedsFemale = NutritionalNeedsMap.TABLE.get("ADULTFEMALE");
+                NutritionalItems NutritionalNeedsFemale = NutritionalNeedsMap.table.get("ADULTFEMALE");
                 double[] nutritionForAdultFemale = NutritionalNeedsFemale.percentageToCalories();
                 actualCalories[j] = actualCalories[j]+nutritionForAdultFemale[j];
             }
@@ -80,7 +80,7 @@ public class Family {
 
         for(int i = 0; i < this.childOver8; i++){
             for(int j = 0; j < 5; j++){
-                NutritionalItems NutritionalNeedsChildOver8 = NutritionalNeedsMap.TABLE.get("CHILDOVER8");
+                NutritionalItems NutritionalNeedsChildOver8 = NutritionalNeedsMap.table.get("CHILDOVER8");
                 double[] nutritionForChildOver8 = NutritionalNeedsChildOver8.percentageToCalories();
                 actualCalories[j] = actualCalories[j]+nutritionForChildOver8[j];
             }
@@ -88,7 +88,7 @@ public class Family {
 
         for(int i = 0; i < this.childUnder8; i++){
             for(int j = 0; j < 5; j++){
-                NutritionalItems NutritionalNeedsChildUnder8 = NutritionalNeedsMap.TABLE.get("CHILDUNDER8");
+                NutritionalItems NutritionalNeedsChildUnder8 = NutritionalNeedsMap.table.get("CHILDUNDER8");
                 double[] nutritionForChildUnder8 = NutritionalNeedsChildUnder8.percentageToCalories();
                 actualCalories[j] = actualCalories[j]+nutritionForChildUnder8[j];
             }
