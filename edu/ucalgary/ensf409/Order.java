@@ -14,9 +14,8 @@ public class Order {
      * @param families : array of Family objects belong to a
      *                  specific order
      */
-    Order(Family[] families){
-        this.families = new ArrayList<>();
-        this.families.addAll(Arrays.asList(families));
+    Order(ArrayList<Family> families){
+        this.families = families;
     }
 
     /**

@@ -46,6 +46,7 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 	private String numChildUnder8 = "0";
 	private int familyID = 0;
 	private boolean success;
+	private Order order;
 
 	/**
 	 * Launch the application.
@@ -273,7 +274,7 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 					Family family = new Family(memberC[0],memberC[1],memberC[2],memberC[3],memberC[4]);
 					listOfFamilies.add(family);
 				}
-				
+
 				Order order = new Order(listOfFamilies);
 				this.success = order.getPassed();
 				this.frame.setVisible(false);

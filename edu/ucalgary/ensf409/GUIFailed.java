@@ -96,7 +96,7 @@ public class GUIFailed extends JFrame implements ActionListener, MouseListener {
 		JButton btnTryAgain = new JButton("Try Again");
 		btnTryAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIStart1.start();
+				GUIStart.start();
 			}
 		});
 		btnTryAgain.setFont(new Font("Lantinghei TC", Font.BOLD, 13));

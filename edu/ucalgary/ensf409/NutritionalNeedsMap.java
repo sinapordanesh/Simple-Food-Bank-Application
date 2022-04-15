@@ -19,7 +19,7 @@ import java.util.HashMap;
  */
 
 public class NutritionalNeedsMap {
-    private HashMap <String, NutritionalItems> TABLE; 
+    public static HashMap <String, NutritionalItems> TABLE;
     public NutritionalNeedsMap(Connection dbConnect)
     {
         Statement myStmt;

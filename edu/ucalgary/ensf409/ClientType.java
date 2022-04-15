@@ -10,6 +10,7 @@ package edu.ucalgary.ensf409;
 
 public enum ClientType {
     ADULTMALE, ADULTFEMALE, CHILDOVER8, CHILDUNDER8;
+
     public NutritionalItems getNutritionalItems(int wG, int fV, int p, int o, int c) {
         switch(this) {
             case ADULTMALE:

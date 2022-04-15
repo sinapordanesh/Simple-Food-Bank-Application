@@ -23,14 +23,14 @@ public class FamilyTest {
     public int numAdultFeMale = 1;
     public int numChildUnder8 = 1;
     public int numChildOver8 = 2;
-    public int[] expectedNeedsFamily = new int[4];
-    public int[] expectedNeedsFamilyPercentage = new int[4];
+    public double [] expectedNeedsFamily = new double [4];
+    public double [] expectedNeedsFamilyPercentage = new double [4];
     //**********************************************************************************************
 
     /**
      * helper method to create class NutritionalItems with given family members
      */
-    @Test
+
     public NutritionalItems createNutritionalItemsForFamily() {
         for (int i = 0; i < expectedNeedsFamily.length - 1; i++) {
 

@@ -25,16 +25,16 @@ public class HamperTest {
     public int numAdultFeMale = 1;
     public int numChildUnder8 = 1;
     public int numChildOver8 = 2;
-    public int[] expectedNeedsFamily = new int[4];
-    public int[] expectedNeedsFamilyPercentage = new int[4];
+    public double[] expectedNeedsFamily = new double[4];
+    public double[] expectedNeedsFamilyPercentage = new double[4];
     //**********************************************************************************************
 
 
     /**
      * helper method to create class NutritionalItems with given family members
      */
-    @Test
-    public NutritionalItems createNutritionalItemsForFamily(){
+
+    private NutritionalItems createNutritionalItemsForFamily(){
         for (int i = 0; i < expectedNeedsFamily.length-1 ; i++){
             // convert percentage form of individual family member type nutritional needs to actual value of specific nutrition type
             // sum them up and store at array
@@ -72,6 +72,7 @@ public class HamperTest {
      */
     @Test
     public void testFamilyClassConstructor() {
+
         NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
         Hamper actualHamper = new Hamper(expectedNutritionalItemsFamily);
         assertNotNull("Hamper class was not created", actualHamper);
@@ -110,17 +111,17 @@ public class HamperTest {
         hamper.setNutritionalRequirements(expectedNutritionalItems);
         NutritionalItems actualNutritionalRequirements = hamper.getNutritionalRequirements();
 
-        int actualWholeGrains = actualNutritionalRequirements.getWholeGrains();
-        int actualFruitVeggies = actualNutritionalRequirements.getFruitVeggies();
-        int actualProtein = actualNutritionalRequirements.getProtein();
-        int actualOthers = actualNutritionalRequirements.getOthers();
-        int actualCalories = actualNutritionalRequirements.getCalories();
+        double actualWholeGrains = actualNutritionalRequirements.getWholeGrains();
+        double actualFruitVeggies = actualNutritionalRequirements.getFruitVeggies();
+        double actualProtein = actualNutritionalRequirements.getProtein();
+        double actualOthers = actualNutritionalRequirements.getOthers();
+        double actualCalories = actualNutritionalRequirements.getCalories();
 
-        int expectedWholeGrains = 10;
-        int expectedFruitVeggies = 20;
-        int expectedProtein = 30;
-        int expectedOthers = 40;
-        int expectedCalories = 500;
+        double expectedWholeGrains = 10;
+        double expectedFruitVeggies = 20;
+        double expectedProtein = 30;
+        double expectedOthers = 40;
+        double expectedCalories = 500;
 
         assertEquals("setter for WholeGrain dose unexpected behavior",
                 expectedWholeGrains, actualWholeGrains);
@@ -145,7 +146,7 @@ public class HamperTest {
 
         Hamper hamper = new Hamper(expectedNutritionalItemsFamily);
         ArrayList<Food> actualFoodItems = hamper.getFoodItems();
-        assertNotNull("getFoodItems() dose not returned ArrayList<Food>", actualFoodItem);
+        assertNotNull("getFoodItems() dose not returned ArrayList<Food>", actualFoodItems);
 
     }
 
@@ -163,7 +164,7 @@ public class HamperTest {
         Food orange = new Food(101,"Orange",21,22,23,34,1000);
         Food grape = new Food(102,"Grape",24,33,33,10,15);
 
-        Arraylist<Food> foods = new ArrayList<Food>();
+        ArrayList<Food> foods = new ArrayList<Food>();
         foods.add(apple);
         foods.add(orange);
         foods.add(grape);
@@ -276,7 +277,7 @@ public class HamperTest {
         // since (2) needs only 2 foods while (1) requires 3 foods this CalcBestHamperWithEnoughFoods()
         // must save two tunas into its foodItems array and delete tuna0, and tuna1 from inventory hash map and set is filled true
 
-        HashMap<Integer, Food> smallInventory = new HashMap<Food>();
+        HashMap<Integer, Food> smallInventory = new HashMap<Integer, Food>();
 
         Food apple0 = new Food(100,"Apple",10,10,10,70,300);
         Food orange0 = new Food(101,"Orange",70,10,10,10,300);
@@ -309,10 +310,10 @@ public class HamperTest {
 
 
         // see if it fills its foodItems: ArrayList<Food>
-        expectedFoodsinArray0 = hamper.getFoodItems().get(0);
-        expectedFoodsinArray1 = hamper.getFoodItems().get(1);
-        assertEquals("calcBestHamper() filled food array with wrong foods",tuna0, hamper.expectedFoodsinArray0);
-        assertEquals("calcBestHamper() filled food array with wrong foods",tuna1, hamper.expectedFoodsinArray1);
+        Food actualFoodsInArray0 = hamper.getFoodItems().get(0);
+        Food actualFoodsInArray1 = hamper.getFoodItems().get(1);
+        assertEquals("calcBestHamper() filled food array with wrong foods",tuna0, actualFoodsInArray0);
+        assertEquals("calcBestHamper() filled food array with wrong foods",tuna1, actualFoodsInArray1);
 
         // see if it set isFilled to true
         assertTrue("even hamper is filled it did not set isFilled to true", hamper.getIsFilled());
@@ -338,6 +339,7 @@ public class HamperTest {
         Food grape0 = new Food(102,"Grape",10,10,10,70,100);
         Food tuna0 = new Food(103,"Tuna",10,10,10,70,500);
 
+        HashMap<Integer, Food> smallInventory = new HashMap<Integer, Food>();
         smallInventory.put(100, apple0);
         smallInventory.put(101, orange0);
         smallInventory.put(102, grape0);
@@ -356,7 +358,8 @@ public class HamperTest {
                 hamper.getFoodItems().size());
 
         // see if it set isFilled is still false
-        assertFalse("even hamper cannot be filled, the status is true", hamper.getIsfilld());
+        boolean status = hamper.getIsFilled();
+        assertFalse("even hamper cannot be filled, the status is true", status);
 
     }
 

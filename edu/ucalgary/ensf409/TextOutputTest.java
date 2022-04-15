@@ -1,6 +1,9 @@
 package edu.ucalgary.ensf409;
 
 import org.junit.*;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 
@@ -16,9 +19,21 @@ public class TextOutputTest {
     public final Family FAMILY1 = new Family(1,1,1,1, 1);
     public final Family FAMILY2 = new Family(1,1,1,0, 2);
     public final Family FAMILY3 = new Family(1,0,1,0, 3);
-    public final Family[] FAMILIES = new Family[]{FAMILY1, FAMILY2, FAMILY3}; 
-    public final Order ORDER = new Order(FAMILIES);
-    
+
+
+
+    /**
+     * helper method to construct order
+     */
+    private Order contructOrder(){
+        ArrayList<Family> familys = new ArrayList<Family>();
+        familys.add(FAMILY1);
+        familys.add(FAMILY2);
+        familys.add(FAMILY3);
+        Order order = new Order(familys);
+        return order;
+    }
+
     /**
      * call TextOutput(order) with an Order object
      * TextOuput(Order) is called with a variable from class order and outputs
@@ -27,7 +42,8 @@ public class TextOutputTest {
     @Test
     public void testTextOuputDefaultConstructor()
     {
-        TextOutput newTextOutput = new TextOutput(ORDER);
+        Order order = contructOrder();
+        TextOutput newTextOutput = new TextOutput(order);
         assertNotNull("constructor failed, new TextOutput object is null", 
         newTextOutput);
     }
@@ -40,9 +56,10 @@ public class TextOutputTest {
     @Test
     public void testGetOrder()
     {
-        TextOutput newTextOutput = new TextOutput(ORDER);
+        Order order = contructOrder();
+        TextOutput newTextOutput = new TextOutput(order);
         Order actual = newTextOutput.getOrder();
-        Order expected = ORDER;
+        Order expected = order;
         assertEquals("actual value (of type ORDER) does not equal the actual"
         + "value", expected, actual);
 
