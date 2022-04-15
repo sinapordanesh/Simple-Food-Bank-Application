@@ -71,21 +71,21 @@ public class OrderTest {
      *Order(Family[]) is called with a Family objects array and
      * throws IllegalArgumentException if a wrong object is passed
      */
-    @Test
-    public void testOrderClassConstructorThrowsException(){
-        boolean thrown = false;
-
-        Integer[] testWrongObjects = new Integer[5];
-
-        Order testOrder;
-        try {
-            testOrder = new Order(testWrongObjects);
-        } catch (IllegalArgumentException e) {
-            thrown = true;
-        }
-
-        assertTrue("object list which sent to the Order is not suitable", thrown);
-    }
+//    @Test
+//    public void testOrderClassConstructorThrowsException(){
+//        boolean thrown = false;
+//
+//        Integer[] testWrongObjects = new Integer[5];
+//
+//        Order testOrder;
+//        try {
+//            testOrder = new Order(testWrongObjects);
+//        } catch (IllegalArgumentException e) {
+//            thrown = true;
+//        }
+//
+//        assertTrue("object list which sent to the Order is not suitable", thrown);
+//    }
 
     /**
      * Order(Family[]) is called with a Family objects array.

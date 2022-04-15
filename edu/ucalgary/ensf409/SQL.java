@@ -21,6 +21,18 @@ public class SQL {
     }
 
     /**
+     * initialize the database connection
+     */
+    public void initializeConnection(){
+        try{
+            dbConnection = DriverManager.getConnection(this.DBURL, this.USERNAME, this.PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * get the whole needed table and return a Resultset object
      * to loop through the table later.
      * @param tableName

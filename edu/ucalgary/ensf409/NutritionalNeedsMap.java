@@ -19,32 +19,33 @@ import java.util.HashMap;
  */
 
 public class NutritionalNeedsMap {
-    public static HashMap <String, NutritionalItems> TABLE;
-    public NutritionalNeedsMap(Connection dbConnect)
+    public static HashMap <String, NutritionalItems> table;
+
+    public NutritionalNeedsMap(SQL data)
     {
         Statement myStmt;
         ResultSet results;
 
         try {
-            myStmt = dbConnect.createStatement();
+            myStmt = data.getDbConnection().createStatement();
 
             results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Adult Male'");
-            TABLE.put("ADULTMALE",ClientType.ADULTMALE.getNutritionalItems(results.getInt("WholeGrains"), 
+            table.put("ADULTMALE",ClientType.ADULTMALE.getNutritionalItems(results.getInt("WholeGrains"),
             results.getInt("FruitVeggies"), results.getInt("Protein"), 
             results.getInt("Other"), results.getInt("Calories")));
 
             results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Adult Adult Female'");
-            TABLE.put("ADULTFEMALE",ClientType.ADULTFEMALE.getNutritionalItems(results.getInt("WholeGrains"), 
+            table.put("ADULTFEMALE",ClientType.ADULTFEMALE.getNutritionalItems(results.getInt("WholeGrains"),
             results.getInt("FruitVeggies"), results.getInt("Protein"), 
             results.getInt("Other"), results.getInt("Calories")));
 
             results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Child over 8'");
-            TABLE.put("CHILDOVER8",ClientType.CHILDOVER8.getNutritionalItems(results.getInt("WholeGrains"), 
+            table.put("CHILDOVER8",ClientType.CHILDOVER8.getNutritionalItems(results.getInt("WholeGrains"),
             results.getInt("FruitVeggies"), results.getInt("Protein"), 
             results.getInt("Other"), results.getInt("Calories")));
 
             results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Child under 8'");
-            TABLE.put("CHILUNDER8",ClientType.CHILDUNDER8.getNutritionalItems(results.getInt("WholeGrains"), 
+            table.put("CHILUNDER8",ClientType.CHILDUNDER8.getNutritionalItems(results.getInt("WholeGrains"),
             results.getInt("FruitVeggies"), results.getInt("Protein"), 
             results.getInt("Other"), results.getInt("Calories")));
 
@@ -57,6 +58,6 @@ public class NutritionalNeedsMap {
     * Return HashMap <String, NutritionalItems> TABLE
     */
     public HashMap<String, NutritionalItems> getTable() {
-            return this.TABLE;
+            return this.table;
         }
 }

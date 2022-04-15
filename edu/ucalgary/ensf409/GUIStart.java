@@ -39,7 +39,7 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 	public static void start() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				try{
 					GUIStart window = new GUIStart();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -47,7 +47,6 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 				}
 			}
 		});
-
 	}
 
 	/**
@@ -133,8 +132,6 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 		if(e.getSource().equals(txtEx)) {
 			txtEx.setText("");
 		}
-		
-		
 	}
 
 	@Override
@@ -142,8 +139,6 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 		if(e.getSource().equals(txtEx)) {
 			txtEx.setText("");
 		}
-		
-		
 	}
 
 	@Override
