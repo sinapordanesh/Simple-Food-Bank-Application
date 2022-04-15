@@ -124,15 +124,15 @@ public class HamperTest {
         double expectedCalories = 500;
 
         assertEquals("setter for WholeGrain dose unexpected behavior",
-                expectedWholeGrains, actualWholeGrains);
+                expectedWholeGrains, actualWholeGrains, 0);
         assertEquals("setter for FruitVeggies dose unexpected behavior",
-                expectedFruitVeggies, actualFruitVeggies);
+                expectedFruitVeggies, actualFruitVeggies, 0);
         assertEquals("setter for Protein dose unexpected behavior",
-                expectedProtein, actualProtein);
+                expectedProtein, actualProtein, 0);
         assertEquals("setter for Others dose unexpected behavior",
-                expectedOthers, actualOthers);
+                expectedOthers, actualOthers, 0);
         assertEquals("setter for Calories dose unexpected behavior",
-                expectedCalories, actualCalories);
+                expectedCalories, actualCalories, 0);
     }
 
     /**

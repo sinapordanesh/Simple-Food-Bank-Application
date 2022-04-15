@@ -99,15 +99,15 @@ public class FamilyTest {
 
 
         assertEquals("Calculation of calcIndividualWeeklyNutritionalNeeds for WholeGrain was not correct",
-                expectedWholeGrains, actualWholeGrains);
+                expectedWholeGrains, actualWholeGrains, 0);
         assertEquals("Calculation of calcIndividualWeeklyNutritionalNeeds for FruitVeggies was not correct",
-                expectedFruitVeggies, actualFruitVeggies);
+                expectedFruitVeggies, actualFruitVeggies, 0);
         assertEquals("Calculation of calcIndividualWeeklyNutritionalNeeds for Protein was not correct",
-                expectedProtein, actualProtein);
+                expectedProtein, actualProtein, 0);
         assertEquals("Calculation of calcIndividualWeeklyNutritionalNeeds for Others was not correct",
-                expectedOthers, actualOthers);
+                expectedOthers, actualOthers, 0);
         assertEquals("Calculation of calcIndividualWeeklyNutritionalNeeds for Calories was not correct",
-                expectedCalories, actualCalories);
+                expectedCalories, actualCalories, 0);
     }
 
     /**

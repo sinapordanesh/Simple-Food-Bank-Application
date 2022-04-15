@@ -117,16 +117,16 @@ public class Order {
             Inventory.updateInventory();
         }
         // take foods from filled hampers and return them to the inventory
-//        else{
-//            for (Family family: families){
-//                Hamper hamper = family.getHamper();
-//                if (hamper.getIsFilled()){
-//                    for (Food food: hamper.getFoodItems()){
-//                        Inventory.inventory.put(food.getItemId(), food);
-//                    }
-//                }
-//            }
-//        }
+        else{
+            for (Family family: families){
+                Hamper hamper = family.getHamper();
+                if (hamper.getIsFilled()){
+                    for (Food food: hamper.getFoodItems()){
+                        Inventory.inventory.put(food.getItemId(), food);
+                    }
+                }
+            }
+        }
 
         return result;
     }

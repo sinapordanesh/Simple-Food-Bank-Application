@@ -276,6 +276,7 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 				}
 
 				Order order = new Order(listOfFamilies);
+				order.calcHampers();
 				this.success = order.getPassed();
 				this.frame.setVisible(false);
 				if(success == true) {

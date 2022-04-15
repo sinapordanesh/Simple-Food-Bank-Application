@@ -182,10 +182,7 @@ public class GUISuccess extends JFrame implements ActionListener, MouseListener 
 							"Foood	: "+(familyID/13)+"\n"+
 							"Fooood	: "+(familyID/10)+"\n");
 				}
-
-
 				frame.repaint();
-				
 			}
 			
 		}
