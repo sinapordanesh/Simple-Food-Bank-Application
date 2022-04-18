@@ -2,6 +2,14 @@ package edu.ucalgary.ensf409;
 
 import java.sql.*;
 
+/**
+ @author Saman Pordanesh <a href="mailto:saman.pordanesh@ucalgary.ca">
+ saman.pordanesh@ucalgary.ca</a>
+ @UCID 30127440
+ @version 1.1
+ @since 1.0
+ */
+
 public class SQL {
     public final String DBURL;
     public final String USERNAME;

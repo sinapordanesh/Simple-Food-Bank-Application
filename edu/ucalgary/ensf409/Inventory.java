@@ -5,6 +5,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ @author Saman Pordanesh <a href="mailto:saman.pordanesh@ucalgary.ca">
+ saman.pordanesh@ucalgary.ca</a>
+ @UCID 30127440
+ @version 1.1
+ @since 1.0
+ */
+
+
 public class Inventory {
 
     public static HashMap<Integer, Food> inventory = new HashMap<>();

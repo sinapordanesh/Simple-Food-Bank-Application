@@ -1,5 +1,13 @@
 package edu.ucalgary.ensf409;
 
+/**
+ @author Saman Pordanesh <a href="mailto:saman.pordanesh@ucalgary.ca">
+ saman.pordanesh@ucalgary.ca</a>
+ @UCID 30127440
+ @version 1.1
+ @since 1.0
+ */
+
 public class Food {
 
     private final int ITEMID;

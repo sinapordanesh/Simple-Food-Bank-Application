@@ -33,9 +33,16 @@ public class Family {
         this.childUnder8 = numCU8;
         this.familyId = familyId;
 
-
         this.individualWeeklyNutritionalNeeds = calcIndividualWeeklyNutritionalNeeds();
         this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds);
+    }
+
+    Family( int numAM, int numAF, int numCO8, int numCU8, int familyId, int test){
+        this.adultMale = numAM;
+        this.adultFemale = numAF;
+        this.childOver8 = numCO8;
+        this.childUnder8 = numCU8;
+        this.familyId = familyId;
     }
 
     /**

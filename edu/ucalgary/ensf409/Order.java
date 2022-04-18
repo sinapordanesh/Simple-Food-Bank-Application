@@ -3,9 +3,18 @@ package edu.ucalgary.ensf409;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ @author Saman Pordanesh <a href="mailto:saman.pordanesh@ucalgary.ca">
+ saman.pordanesh@ucalgary.ca</a>
+ @UCID 30127440
+ @version 1.1
+ @since 1.0
+ */
+
+
 public class Order {
     private ArrayList<Family> families;
-    private ArrayList<Food> totalFoodItems;
+    private ArrayList<Food> totalFoodItems = new ArrayList<Food>();
     private boolean passed = false;
 
     /**
@@ -16,7 +25,7 @@ public class Order {
      */
     Order(ArrayList<Family> families){
         this.families = families;
-        this.totalFoodItems = new ArrayList<Food>();
+//        this.totalFoodItems = new ArrayList<Food>();
     }
 
     /**
