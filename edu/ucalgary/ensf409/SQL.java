@@ -80,9 +80,12 @@ public class SQL {
      */
     public void deleteItem(String tableName, int itemId){
         try{
-            String query = "DELETE FROM " + tableName + " WHERE ItemID = ?";
+            String query = "DELETE FROM available_food WHERE ItemID = " + itemId;
+//            System.out.printf(query);
+//            System.exit(0);
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query);
-            preparedStatement.setInt(1, itemId);
+            preparedStatement.executeUpdate(query);
+//            preparedStatement.setInt(1, itemId);
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();

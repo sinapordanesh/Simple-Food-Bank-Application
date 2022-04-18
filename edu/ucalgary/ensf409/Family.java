@@ -53,14 +53,6 @@ public class Family {
 
     }
 
-    Family( int numAM, int numAF, int numCO8, int numCU8, int familyId, int test){
-        this.adultMale = numAM;
-        this.adultFemale = numAF;
-        this.childOver8 = numCO8;
-        this.childUnder8 = numCU8;
-        this.familyId = familyId;
-    }
-
     /**
      * helper method for calcIndividualWeeklyNutritionalNeeds() to store single family's calories to percentage form
      * @param actualCalories : calorie form of nutrition information
