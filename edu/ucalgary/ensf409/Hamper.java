@@ -28,6 +28,8 @@ public class Hamper {
      *  calculate best hamper and store foods into foodItem based on Nutritional Requirements
      */
     public void calcBestHamper() {
+
+
         //possible food combinations
         ArrayList<ArrayList<Food>> possibleCombinations = new ArrayList<ArrayList<Food>>();
         //set of keys (Food ID)

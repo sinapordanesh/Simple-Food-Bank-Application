@@ -20,6 +20,7 @@ public class FoodBankMain {
 		Inventory inventory = new Inventory(sql);
 		NutritionalNeedsMap nutritionalNeedsMap = new NutritionalNeedsMap(sql);
 		GUIStart.start();
+
 /*		boolean on = true;
 		boolean success = true;
 		int numOfFamilies = 0;
