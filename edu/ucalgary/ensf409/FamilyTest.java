@@ -126,7 +126,7 @@ public class FamilyTest {
     @Test
     public void testSetHamper() {
         NutritionalItems expectedNutritionalItemsFamily = createNutritionalItemsForFamily();
-        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1,1);
+        Family fam = new Family(numAdultMale, numAdultFeMale, numChildOver8, numChildUnder8,1, 1);
         fam.setIndividualWeeklyNutritionalNeeds(expectedNutritionalItemsFamily);
         Hamper actualHamper = new Hamper(expectedNutritionalItemsFamily);
         fam.setHamper(actualHamper);
