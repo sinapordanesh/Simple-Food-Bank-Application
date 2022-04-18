@@ -6,8 +6,13 @@
  @since 1.0
  */
 
-package edu.ucalgary.ensf409;
+package edu.ucalgary.ensf409.testfiles;
 import org.junit.*;
+
+import edu.ucalgary.ensf409.Family;
+import edu.ucalgary.ensf409.Hamper;
+import edu.ucalgary.ensf409.NutritionalItems;
+
 import static org.junit.Assert.*;
 
 

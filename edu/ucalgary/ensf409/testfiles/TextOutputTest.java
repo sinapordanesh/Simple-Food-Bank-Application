@@ -1,6 +1,11 @@
-package edu.ucalgary.ensf409;
+package edu.ucalgary.ensf409.testfiles;
 
 import org.junit.*;
+
+import edu.ucalgary.ensf409.Family;
+import edu.ucalgary.ensf409.NutritionalItems;
+import edu.ucalgary.ensf409.Order;
+import edu.ucalgary.ensf409.TextOutput;
 
 import java.util.ArrayList;
 import java.util.Arrays;
