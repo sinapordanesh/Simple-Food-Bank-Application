@@ -55,17 +55,6 @@ public class Family {
 
     }
 
-    public Family( int numAM, int numAF, int numCO8, int numCU8, int familyId, boolean test){
-    	if((numAM == 0)&&(numAF == 0)&&(numCO8 == 0)&&(numCU8 == 0)) {
-    		throw new IllegalArgumentException("Family must contain at least one family member");
-    	}
-        this.adultMale = numAM;
-        this.adultFemale = numAF;
-        this.childOver8 = numCO8;
-        this.childUnder8 = numCU8;
-        this.familyId = familyId;
-    }
-
     /**
      * helper method for calcIndividualWeeklyNutritionalNeeds() to store single family's calories to percentage form
      * @param actualCalories : calorie form of nutrition information
