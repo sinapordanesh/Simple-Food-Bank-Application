@@ -84,4 +84,14 @@ public class Inventory {
         return inventory.isEmpty();
     }
 
+	public static void setInventory(HashMap<Integer, Food> testInventory) {
+		inventory = testInventory;
+		
+	}
+	
+	public static HashMap<Integer, Food> getInventory() {
+		return inventory;
+		
+	}
+
 }

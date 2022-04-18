@@ -26,7 +26,10 @@ public class Family {
      * @param numCU8 : number of child under 8 in single family
      * @param familyId : family ID
      */
-    public Family( int numAM, int numAF, int numCO8, int numCU8, int familyId ){
+    public Family( int numAM, int numAF, int numCO8, int numCU8, int familyId ) throws IllegalArgumentException {
+    	if((numAM == 0)&&(numAF == 0)&&(numCO8 == 0)&&(numCU8 == 0)) {
+    		throw new IllegalArgumentException("Family must contain at least one family member");
+    	}
         this.adultMale = numAM;
         this.adultFemale = numAF;
         this.childOver8 = numCO8;
@@ -35,6 +38,19 @@ public class Family {
 
         this.individualWeeklyNutritionalNeeds = calcIndividualWeeklyNutritionalNeeds();
         this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds);
+    }
+    
+    public Family( int numAM, int numAF, int numCO8, int numCU8, int familyId, int test){
+    	if((numAM == 0)&&(numAF == 0)&&(numCO8 == 0)&&(numCU8 == 0)) {
+    		throw new IllegalArgumentException("Family must contain at least one family member");
+    	}
+        this.adultMale = numAM;
+        this.adultFemale = numAF;
+        this.childOver8 = numCO8;
+        this.childUnder8 = numCU8;
+        this.familyId = familyId;
+        this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds,1);
+
     }
 
     Family( int numAM, int numAF, int numCO8, int numCU8, int familyId, int test){
