@@ -19,9 +19,19 @@ public class Hamper {
      * Constructor for Hamper Class
      * @param nutritionalRequirements: Minimum Nutritional Requirements for single Family
      */
-    public Hamper( NutritionalItems nutritionalRequirements ){
+    public Hamper( NutritionalItems nutritionalRequirements ) throws NullPointerException {
+    	if(nutritionalRequirements == null) {
+    		throw new NullPointerException();
+    	}
         this.nutritionalRequirements = nutritionalRequirements;
         calcBestHamper();
+    }
+    
+    public Hamper( NutritionalItems nutritionalRequirements, int test) throws NullPointerException {
+    	if(nutritionalRequirements == null) {
+    		throw new NullPointerException();
+    	}
+    	this.nutritionalRequirements = nutritionalRequirements;
     }
 
     /**
