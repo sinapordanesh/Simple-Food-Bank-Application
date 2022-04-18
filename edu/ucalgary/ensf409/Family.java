@@ -66,7 +66,7 @@ public class Family {
             for(int j = 0; j < 5; j++){
                 NutritionalItems NutritionalNeedsMale = NutritionalNeedsMap.table.get("ADULTMALE");
                 double[] nutritionForAdultMale = NutritionalNeedsMale.percentageToCalories();
-                actualCalories[j] = actualCalories[j]+nutritionForAdultMale[j];
+                actualCalories[j] = actualCalories[j]+nutritionForAdultMale[j]*7; 
             }
         }
 
@@ -74,7 +74,7 @@ public class Family {
             for(int j = 0; j < 5; j++){
                 NutritionalItems NutritionalNeedsFemale = NutritionalNeedsMap.table.get("ADULTFEMALE");
                 double[] nutritionForAdultFemale = NutritionalNeedsFemale.percentageToCalories();
-                actualCalories[j] = actualCalories[j]+nutritionForAdultFemale[j];
+                actualCalories[j] = actualCalories[j]+nutritionForAdultFemale[j]*7; 
             }
         }
 
@@ -82,7 +82,7 @@ public class Family {
             for(int j = 0; j < 5; j++){
                 NutritionalItems NutritionalNeedsChildOver8 = NutritionalNeedsMap.table.get("CHILDOVER8");
                 double[] nutritionForChildOver8 = NutritionalNeedsChildOver8.percentageToCalories();
-                actualCalories[j] = actualCalories[j]+nutritionForChildOver8[j];
+                actualCalories[j] = actualCalories[j]+nutritionForChildOver8[j]*7; 
             }
         }
 
@@ -90,7 +90,7 @@ public class Family {
             for(int j = 0; j < 5; j++){
                 NutritionalItems NutritionalNeedsChildUnder8 = NutritionalNeedsMap.table.get("CHILDUNDER8");
                 double[] nutritionForChildUnder8 = NutritionalNeedsChildUnder8.percentageToCalories();
-                actualCalories[j] = actualCalories[j]+nutritionForChildUnder8[j];
+                actualCalories[j] = actualCalories[j]+nutritionForChildUnder8[j]*7; 
             }
         }
 

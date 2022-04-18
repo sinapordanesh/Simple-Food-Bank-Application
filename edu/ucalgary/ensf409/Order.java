@@ -16,6 +16,7 @@ public class Order {
      */
     Order(ArrayList<Family> families){
         this.families = families;
+        this.totalFoodItems = new ArrayList<Food>();
     }
 
     /**
@@ -103,15 +104,17 @@ public class Order {
     public boolean calcHampers(){
         boolean result = true;
         for (Family family : families){
-            family.getHamper().calcBestHamper();
             result = (result & family.getHamper().getIsFilled());
         }
+        
+        passed = result;
 
         //update database if the whole order passed
         if (passed){
             for (Family family: families){
                 Hamper hamper = family.getHamper();
-                totalFoodItems.addAll(hamper.getFoodItems());
+                ArrayList<Food> foods = hamper.getFoodItems();
+                totalFoodItems.addAll(foods);
             }
             Inventory.removedItems.addAll(totalFoodItems);
             Inventory.updateInventory();

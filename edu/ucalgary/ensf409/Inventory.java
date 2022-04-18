@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Inventory {
 
     public static HashMap<Integer, Food> inventory = new HashMap<>();
-    public static ArrayList<Food> removedItems;
+    public static ArrayList<Food> removedItems = new ArrayList<Food>();
     private static SQL database;
 
     /**
@@ -60,6 +60,7 @@ public class Inventory {
             for (Food food: removedItems){
                 database.deleteItem("AVAILABLE_FOOD", food.getItemId());
             }
+            removedItems.clear();
             return true;
         } catch (Exception e){
             return false;

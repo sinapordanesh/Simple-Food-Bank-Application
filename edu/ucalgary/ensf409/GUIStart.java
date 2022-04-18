@@ -31,16 +31,18 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 	JFrame frame;
 	private JTextField txtEx;
 	private int numOfFamilies = 0;
-	private String stringInput; 
+	private String stringInput;
+	private int orderNumber;
 	//private Image image;
 	/**
 	 * Launch the application.
+	 * @param orderNumber 
 	 */
-	public static void start() {
+	public static void start(int orderNumber) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try{
-					GUIStart window = new GUIStart();
+					GUIStart window = new GUIStart(orderNumber);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +54,8 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 	/**
 	 * Create the application.
 	 */
-	public GUIStart() {
+	public GUIStart(int orderNumber) {
+		this.orderNumber = orderNumber;
 		initialize();
 	}
 
@@ -166,7 +169,7 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 			numOfFamilies = Integer.parseInt(stringInput);
 			JOptionPane.showMessageDialog(this, "Total Families for single order is " + stringInput);
 			this.frame.setVisible(false);
-			GUIFamilyInfo.familyInfo(numOfFamilies);
+			GUIFamilyInfo.familyInfo(numOfFamilies,this.orderNumber);
 		}
 		
 	}
@@ -182,6 +185,12 @@ public class GUIStart extends JFrame implements ActionListener, MouseListener {
 			if((stringInput.charAt(i) < 48) || (stringInput.charAt(i) > 57)) {
 				allInputValid = false;
 			}
+		}
+		
+		if(Integer.parseInt(stringInput) == 0) {
+			allInputValid = false;
+			JOptionPane.showMessageDialog(this, "Order must contains at least one famliy");
+			return false;
 		}
 		
 		if(allInputValid == false) {

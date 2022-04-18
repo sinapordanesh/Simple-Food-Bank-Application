@@ -1,10 +1,13 @@
+/**
+ @author Jinsu Kwak <a href="mailto:jinsu.kwak@ucalgary.ca">
+ jinsu.kwak@ucalgary.ca</a>
+ @UCID 30097737
+ @version 1.0
+ @since 1.0
+ */
+
 package edu.ucalgary.ensf409;
 
-
-// I implemented this Class because I wanted to remove red lines (errors) while I'm implementing my Class
-// feel free to remove this one and reconstruct yours if you don't like it
-// Also I think we should change these variables values int to double because
-// since we have to add all and convert into percentage in future calculations, int division may lead inaccurate values
 public class NutritionalItems {
     private final double WHOLEGRAINS;
     private final double FRUITVEGGIES;
@@ -12,7 +15,14 @@ public class NutritionalItems {
     private final double OTHERS;
     private final double CALORIE;
 
-    //UML argument name have to be changed
+    /**
+     * Constructor for NutritionalItem Class
+     * @param wholeGrain: WholeGrain in percentage form
+     * @param fruitVeggies: FruitVeggies in percentage form
+     * @param protein: Protein in percentage form
+     * @param others: Others in percentage form
+     * @param calories: Total Calories
+     */
     public NutritionalItems( double wholeGrain, double fruitVeggies, double protein, double others, double calories ){
         this.WHOLEGRAINS = wholeGrain;
         this.FRUITVEGGIES = fruitVeggies;
@@ -21,9 +31,10 @@ public class NutritionalItems {
         this.CALORIE = calories;
     }
 
-    // different input and output variable type compare to UML
-    // but I prefer this version
-    // since this method changed into public this has to be tested in future test codes
+    /**
+     * double[] percentageToCalories()
+     * function that convert percentage form of nutrition to actual Calorie form
+     */
     public double[] percentageToCalories() {
         double[] actualCalories = new double[5];
         actualCalories[0] = (WHOLEGRAINS/100)*CALORIE;
@@ -34,6 +45,14 @@ public class NutritionalItems {
         return actualCalories;
     }
 
+    /**
+     * ---------------------- getters ------------------------
+	 *	getWholeGrains(): double
+	 *	getFruitVeggies(): double
+	 *	getProtein(): double
+	 *  getOthers(): double
+	 *  getCalories(): double
+     */
     public double getWholeGrains() {return this.WHOLEGRAINS;}
     public double getFruitVeggies() {return this.FRUITVEGGIES;}
     public double getProtein() {return this.PROTEIN;}

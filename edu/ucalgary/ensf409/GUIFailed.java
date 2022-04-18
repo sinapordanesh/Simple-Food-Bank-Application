@@ -34,15 +34,17 @@ public class GUIFailed extends JFrame implements ActionListener, MouseListener {
 
 	private JFrame frame;
 	private boolean on;
+	private int orderNumber;
 
 	/**
 	 * Launch the application.
+	 * @param orderNumber 
 	 */
-	public static void failed() {
+	public static void failed(int orderNumber) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUIFailed window = new GUIFailed();
+					GUIFailed window = new GUIFailed(orderNumber);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +56,8 @@ public class GUIFailed extends JFrame implements ActionListener, MouseListener {
 	/**
 	 * Create the application.
 	 */
-	public GUIFailed() {
+	public GUIFailed(int orderNumber) {
+		this.orderNumber = orderNumber;
 		initialize();
 	}
 
@@ -96,7 +99,9 @@ public class GUIFailed extends JFrame implements ActionListener, MouseListener {
 		JButton btnTryAgain = new JButton("Try Again");
 		btnTryAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIStart.start();
+				int nextOrder = orderNumber+1;
+				frame.setVisible(false);
+				GUIStart.start(nextOrder);	
 			}
 		});
 		btnTryAgain.setFont(new Font("Lantinghei TC", Font.BOLD, 13));

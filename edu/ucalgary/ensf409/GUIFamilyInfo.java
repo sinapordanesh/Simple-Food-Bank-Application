@@ -47,16 +47,17 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 	private int familyID = 0;
 	private boolean success;
 	private Order order;
-
+	private int orderNumber;
 	/**
 	 * Launch the application.
+	 * @param orderNumber 
 	 * @return 
 	 */
-	public static void familyInfo(int numberOfFamilies) {
+	public static void familyInfo(int numberOfFamilies, int orderNumber) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUIFamilyInfo window = new GUIFamilyInfo(numberOfFamilies);
+					GUIFamilyInfo window = new GUIFamilyInfo(numberOfFamilies, orderNumber);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,8 +70,9 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 	/**
 	 * Create the application.
 	 */
-	public GUIFamilyInfo(int numberOfFamilies) {
+	public GUIFamilyInfo(int numberOfFamilies, int orderNumber) {
 		this.numberOfFamilies = numberOfFamilies;
+		this.orderNumber = orderNumber;
 		initialize();
 	}
 
@@ -98,10 +100,7 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 		
 		JButton btnNewButton = new JButton("NEXT");
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.addActionListener(this); /*new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});*/
+		btnNewButton.addActionListener(this);
 		btnNewButton.setFont(new Font("Lantinghei TC", Font.BOLD, 13));
 		btnNewButton.setBounds(505, 173, 77, 97);
 		frame.getContentPane().add(btnNewButton);
@@ -255,6 +254,8 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 		numChildOver8 = txtEg_1.getText();
 		numChildUnder8 = txtEg_2.getText();
 		
+
+		
 		if(validateInput()) {
 			
 			this.familyID++;
@@ -262,6 +263,11 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 			Integer[] members = { Integer.parseInt(numAdultMale),Integer.parseInt(numAdultFemale),
 					Integer.parseInt(numChildOver8), Integer.parseInt(numChildUnder8), familyID};
 			families.add(members);
+			
+			txtEx.setText("");
+			txtEg.setText("");
+			txtEg_1.setText("");
+			txtEg_2.setText("");
 			
 			if(familyID == this.numberOfFamilies) {
 				JOptionPane.showMessageDialog(this, "Creating Hampers for "+familyID
@@ -280,14 +286,13 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 				this.success = order.getPassed();
 				this.frame.setVisible(false);
 				if(success == true) {
-					GUISuccess.success(order);  // or TextOutput: text might go as an argument so we can
-												// text.forrmattedString for GUI
+					GUISuccess.success(order,this.orderNumber); 
 					
 				} else {
-					GUIFailed.failed();
+					GUIFailed.failed(this.orderNumber);
 				}
 			}
-			//GUIFamilyInfo.familyInfo(numOfFamilies);
+
 		}
 		
 	}
@@ -324,6 +329,8 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 				allInputValid = false;
 			}
 		}
+		
+
 
 		
 		if(allInputValid == false) {
@@ -331,14 +338,14 @@ public class GUIFamilyInfo extends JFrame implements ActionListener, MouseListen
 					+ " the input should be an integer format");
 		} 
 		
-		/*
-		if((Integer.parseInt(numAdultMale)+Integer.parseInt(numAdultFemale)+
-				Integer.parseInt(numChildOver8)+Integer.parseInt(numChildUnder8)) == 0) {
-			allInputValid = false;
+
+		if(((Integer.parseInt(numAdultMale) == 0) && (Integer.parseInt(numAdultFemale) == 0)
+			&& (Integer.parseInt(numChildOver8) == 0) && (Integer.parseInt(numChildUnder8)) == 0)) {
 			JOptionPane.showMessageDialog(this, "The family should conatains at least one "
 					+ "family member");
+			return false;
 		}
-		*/
+
 		return allInputValid;
 	}
 }

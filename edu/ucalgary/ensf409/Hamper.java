@@ -29,7 +29,7 @@ public class Hamper {
      */
     public void calcBestHamper() {
 
-
+    	
         //possible food combinations
         ArrayList<ArrayList<Food>> possibleCombinations = new ArrayList<ArrayList<Food>>();
         //set of keys (Food ID)
@@ -41,7 +41,7 @@ public class Hamper {
         //variable to record most efficient hamper
         double minTotalCalorieDiff = Double.POSITIVE_INFINITY;
         //variable to track combination to record
-        int possibleCombinationIndex = 0;
+        int possibleCombinationIndex = -1;
         //variable that indicates current most efficient combination
         int minCalorieDiffCombinationIndex = 0;
 
@@ -66,7 +66,7 @@ public class Hamper {
                 //looping through combination's index from 0
                 for (int i = 0; i < combinationSize; i++) {
                     //keyArray[i]: returns actual key that corresponds for index i, so food stores Food variable for key
-                    Food food = Inventory.inventory.get(keyArray[i]);
+                    Food food = Inventory.inventory.get(keyArray[combination[i]]);
                     //foodNutrition = NutritionalItems for single food (percentage form)
                     NutritionalItems foodNutrition = food.getNutritionalItems();
                     //add each nutrition types
@@ -84,9 +84,11 @@ public class Hamper {
                         (combinationNutrition[2] >= requirements[2]) && (combinationNutrition[3] >= requirements[3])) {
                     possibleCombinations.add(possibleCombination);
                     possibleCombinationIndex++;
-                    if((combinationNutrition[4] - requirements[1]) < minTotalCalorieDiff){
-                        minTotalCalorieDiff = combinationNutrition[4];
+                    double comNut = combinationNutrition[4];
+                    if((combinationNutrition[4] - requirements[4]) < minTotalCalorieDiff){
+                        minTotalCalorieDiff = combinationNutrition[4]- requirements[4];
                         minCalorieDiffCombinationIndex = possibleCombinationIndex;
+                        
                     }
                 }
             }

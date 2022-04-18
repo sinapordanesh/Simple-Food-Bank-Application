@@ -75,7 +75,6 @@ public class SQL {
             String query = "DELETE FROM " + tableName + " WHERE ItemID = ?";
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query);
             preparedStatement.setInt(1, itemId);
-
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();

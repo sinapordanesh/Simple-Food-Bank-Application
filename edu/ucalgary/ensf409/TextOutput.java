@@ -38,7 +38,7 @@ public class TextOutput implements TextFile {
         try {
             BufferedWriter wr = new BufferedWriter(new FileWriter(outputFileName));
             wr.write("Food Bank \n" + "Hamper Order Form \n \n" + "Name:\nDate:\n"
-            + "\n Original Request \n" );
+            + "\nOriginal Request \n" );
             
             ArrayList <Family> families = ORDER.getFamilies();
             int i;
@@ -62,13 +62,13 @@ public class TextOutput implements TextFile {
                 if (family.getAdultFemale() == 0) {
                     adultFemale = "";
                 } else {
-                    adultFemale = family.getAdultMale() + " Adult female, ";
+                    adultFemale = family.getAdultFemale() + " Adult female, ";
                 }
 
                 if (family.getChildOver8() == 0) {
                     over8 = "";
                 } else {
-                    over8 = family.getAdultMale() + " Child Over 8, ";
+                    over8 = family.getChildOver8() + " Child Over 8, ";
                 }
 
                 if (family.getChildUnder8() == 0) {
@@ -77,9 +77,10 @@ public class TextOutput implements TextFile {
                     under8 = family.getChildUnder8() + " Child Under 8";
                 }
                 
-                wr.write("Hamper " + familyId + ": " +  adultMale + adultFemale +
-                over8 + under8 + '\n');
+                wr.write("Hamper " + familyId + ": " + adultMale + adultFemale +
+                over8 + under8 + "\n");
             }
+            wr.write("\n");
             
             for(int j = 0; j < families.size(); j++)
             {
@@ -102,4 +103,6 @@ public class TextOutput implements TextFile {
         }
         
     }
+    
+
 }

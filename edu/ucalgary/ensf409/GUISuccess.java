@@ -19,6 +19,7 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -35,18 +36,21 @@ import javax.swing.JTextArea;
 public class GUISuccess extends JFrame implements ActionListener, MouseListener {
 
 	private JFrame frame;
-	private boolean on;
-	private int familyID = 1;
+	private int familyId = 1;
 	private Order order;
+	private TextOutput orderInfo;
+	private int orderNumber;
+	private ArrayList<Family> families = new ArrayList<Family>();
+
 
 	/**
 	 * Launch the application.
 	 */
-	public static void success(Order order) {
+	public static void success(Order order, int orderNumber) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUISuccess window = new GUISuccess(order);
+					GUISuccess window = new GUISuccess(order, orderNumber);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,8 +63,13 @@ public class GUISuccess extends JFrame implements ActionListener, MouseListener 
 	/**
 	 * Create the application.
 	 */
-	public GUISuccess(Order order) {
+	public GUISuccess(Order order, int orderNumber) {
 		this.order = order;
+		this.orderNumber = orderNumber;
+		this.orderInfo = new TextOutput(order);
+		this.families = order.getFamilies();
+		String outputFileName = String.format("Order_%d.txt", orderNumber);
+		orderInfo.generateFile(outputFileName);
 		initialize();
 	}
 
@@ -102,7 +111,9 @@ public class GUISuccess extends JFrame implements ActionListener, MouseListener 
 		JButton btnTryAgain = new JButton("Try Again");
 		btnTryAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIStart.start();
+				frame.setVisible(false);
+				int nextOrder = orderNumber+1;
+				GUIStart.start(nextOrder);		
 			}
 		});
 		btnTryAgain.setFont(new Font("Lantinghei TC", Font.BOLD, 13));
@@ -122,23 +133,10 @@ public class GUISuccess extends JFrame implements ActionListener, MouseListener 
 		btnExit.setBounds(542, 224, 91, 62);
 		frame.getContentPane().add(btnExit);
 		
-		/*
-		JLabel lblNewLabel_2 = new JLabel("Scroll down to see full detail");
-		lblNewLabel_2.setFont(new Font("Lantinghei TC", Font.PLAIN, 13));
-		lblNewLabel_2.setBounds(20, 105, 405, 181);
-		frame.getContentPane().add(lblNewLabel_2);
-		*/
-		
-		/*
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(20, 105, 405, 181);
-		frame.getContentPane().add(panel);
-		*/
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(new Color(255, 255, 255));
-		textArea.setFont(new Font("Lantinghei TC", Font.PLAIN, 13));
+		textArea.setFont(new Font("Lantinghei TC", Font.PLAIN, 10));
 		textArea.setBounds(20, 105, 405, 181);
 		frame.getContentPane().add(textArea);
 		textArea.setEditable(false);
@@ -146,42 +144,39 @@ public class GUISuccess extends JFrame implements ActionListener, MouseListener 
 		
 		
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setUnitIncrement(10);						//******* increment level
+		scrollBar.setUnitIncrement(1);		
 		class MyAdjustmentListner implements AdjustmentListener {
 
 			@Override
 			public void adjustmentValueChanged(AdjustmentEvent e) {
-				//Adjustable source = e.getAdjustable();
-				//if (e.getValueIsAdjusting()) {
-				///	return;
-				//}
-				/*
-				int type = e.getAdjustmentType();
-				switch(type) {
-					case AdjustmentEvent.UNIT_INCREMENT:
-						familyID++;
-						textArea.setText(Integer.toString(familyID)+"\n"+Integer.toString(familyID));
-						break;
-					case AdjustmentEvent.UNIT_DECREMENT:
-						familyID--;
-						textArea.setText(Integer.toString(familyID)+"\n"+Integer.toString(familyID));
-						break;
-				}*/
+				int numOfFamilies = families.size();
+				String displayOutput = "";
+				
+				if(familyId <= numOfFamilies) {
+					displayOutput = "Order for Family ID: " + familyId + "\n\n";
+					Family currentFamily = families.get(familyId-1);
+					ArrayList<Food> familyFoods = currentFamily.getHamper().getFoodItems();
+					int foodCount = 0;
+					for(Food food: familyFoods) {
+						if(foodCount < 9) {
+							displayOutput = displayOutput +"Food ID: "+food.getItemId()+"\t\t"+
+								"Food: "+food.getName()+"\n";
+								foodCount++;
+									
+						} else {
+							displayOutput = displayOutput + "    ...\t\t       ...\n";
+						}
 
-				if(e.getValue()<0) {
-					familyID--;
-					textArea.setText(Integer.toString(familyID)+"\n"+Integer.toString(familyID));
+					}
+					familyId++;
 				} else {
-					familyID++;
-					textArea.setText("Order for Family ID: "+familyID+"\n\n"+
-							"Fish	: "+(familyID/3)+"	Food2	: "+(familyID/4)+"\n"+
-							"Apple	: "+(familyID/5)+"	Food3	: "+(familyID/2)+"\n"+
-							"Orange	: "+(familyID/7)+"\n"+
-							"Random	: "+(familyID/1)+"\n"+
-							"Food	: "+(familyID/9)+"\n"+
-							"Foood	: "+(familyID/13)+"\n"+
-							"Fooood	: "+(familyID/10)+"\n");
+					displayOutput = "\n"
+							+ "------------------------ End of the Order Form ------------------------";
+					familyId = 1;
 				}
+				
+				textArea.setText(displayOutput);
+
 				frame.repaint();
 			}
 			

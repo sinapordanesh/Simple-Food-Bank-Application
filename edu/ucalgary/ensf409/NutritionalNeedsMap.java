@@ -26,31 +26,7 @@ public class NutritionalNeedsMap {
     {
         this.DATABASE = data;
         try {
-            /*
-            myStmt = data.getDbConnection().createStatement();
-            results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Adult Male'");
-            table.put("ADULTMALE",ClientType.ADULTMALE.getNutritionalItems(results.getInt("WholeGrains"),
-            results.getInt("FruitVeggies"), results.getInt("Protein"), 
-            results.getInt("Other"), results.getInt("Calories")));
-
-            results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Adult Adult Female'");
-            table.put("ADULTFEMALE",ClientType.ADULTFEMALE.getNutritionalItems(results.getInt("WholeGrains"),
-            results.getInt("FruitVeggies"), results.getInt("Protein"), 
-            results.getInt("Other"), results.getInt("Calories")));
-
-            results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Child over 8'");
-            table.put("CHILDOVER8",ClientType.CHILDOVER8.getNutritionalItems(results.getInt("WholeGrains"),
-            results.getInt("FruitVeggies"), results.getInt("Protein"), 
-            results.getInt("Other"), results.getInt("Calories")));
-
-            results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS WHERE Client = 'Child under 8'");
-            table.put("CHILUNDER8",ClientType.CHILDUNDER8.getNutritionalItems(results.getInt("WholeGrains"),
-            results.getInt("FruitVeggies"), results.getInt("Protein"), 
-            results.getInt("Other"), results.getInt("Calories")));
-            */
-
-
-
+           
             saturatingTable("Adult Male", ClientType.ADULTMALE);
             saturatingTable("Adult Female", ClientType.ADULTFEMALE);
             saturatingTable("Child over 8", ClientType.CHILDOVER8);
