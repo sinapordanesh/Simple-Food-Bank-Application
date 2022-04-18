@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Inventory {
 
-    public static HashMap<Integer, Food> inventory;
+    public static HashMap<Integer, Food> inventory = new HashMap<>();
     public static ArrayList<Food> removedItems;
     private static SQL database;
 
@@ -36,6 +36,7 @@ public class Inventory {
     private void saturateMapFromDatabase(ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             int itemId = resultSet.getInt("ItemID");
+
             Food food = new Food(itemId,
                     resultSet.getString("Name"),
                     resultSet.getInt("GrainContent"),
@@ -43,6 +44,7 @@ public class Inventory {
                     resultSet.getInt("ProContent"),
                     resultSet.getInt("Other"),
                     resultSet.getInt("Calories"));
+
             inventory.put(itemId, food);
         }
     }

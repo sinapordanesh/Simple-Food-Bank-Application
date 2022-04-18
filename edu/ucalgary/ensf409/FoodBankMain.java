@@ -15,7 +15,6 @@ public class FoodBankMain {
 		 * connection.... ext..
 		 */
 
-		Class.forName("com.mysql.jdbc.Driver");
 		SQL sql = new SQL("jdbc:mysql://localhost:3306/food_inventory","student","ensf");
 		sql.initializeConnection();
 		Inventory inventory = new Inventory(sql);

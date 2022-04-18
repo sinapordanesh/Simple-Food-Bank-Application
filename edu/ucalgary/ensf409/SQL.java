@@ -34,7 +34,7 @@ public class SQL {
     /**
      * get the whole needed table and return a Resultset object
      * to loop through the table later.
-     * @param tableName
+     * @param tableName: name of the purpose table
      * @return
      * @throws SQLException
      */
@@ -45,13 +45,30 @@ public class SQL {
     }
 
     /**
+     * get a needed row from a table and return a Resultset object
+     * to get information of the specific row.
+     * @param tableName: name of the purpose table
+     * @param rowName: the name of the variable to find the row
+     * @param rowValue: the value which used to match a row.
+     * @return
+     * @throws SQLException
+     */
+    public ResultSet getTableRow(String tableName, String rowName, String rowValue) throws SQLException {
+
+        Statement statement = dbConnection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName + " WHERE " + rowName + " = " + "'" + rowValue + "'");
+
+        return resultSet;
+    }
+
+    /**
      * Delete an item from specific table through its id.
      * Here, we set the function to delete only from
      * AVAILABLE_FOOD table, as the key name on the query
      * is based on that table, although we are passing the
      * table name as an argument.
-     * @param tableName
-     * @param itemId
+     * @param tableName: name of the targeted table
+     * @param itemId: the id of the targeted item
      */
     public void deleteItem(String tableName, int itemId){
         try{
