@@ -16,10 +16,10 @@ import static org.junit.Assert.*;
  */
 
 public class TextOutputTest {
+    
     public final Family FAMILY1 = new Family(1,1,1,1, 1);
     public final Family FAMILY2 = new Family(1,1,1,0, 2);
     public final Family FAMILY3 = new Family(1,0,1,0, 3);
-
 
 
     /**
