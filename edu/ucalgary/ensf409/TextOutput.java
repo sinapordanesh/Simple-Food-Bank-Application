@@ -13,6 +13,7 @@ import java.util.ArrayList;
  @since 1.0
  */
 
+
 public class TextOutput implements TextFile {
     private final Order ORDER;
     

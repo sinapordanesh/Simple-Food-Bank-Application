@@ -36,6 +36,7 @@ public class Family {
         this.childUnder8 = numCU8;
         this.familyId = familyId;
 
+
         this.individualWeeklyNutritionalNeeds = calcIndividualWeeklyNutritionalNeeds();
         this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds);
     }
@@ -49,6 +50,7 @@ public class Family {
         this.childOver8 = numCO8;
         this.childUnder8 = numCU8;
         this.familyId = familyId;
+        this.individualWeeklyNutritionalNeeds = new NutritionalItems(1, 1, 1, 1, 100);
         this.hamper = new Hamper(this.individualWeeklyNutritionalNeeds,1);
 
     }
