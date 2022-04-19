@@ -1,4 +1,4 @@
-package edu.ucalgary.ensf409.testfiles;
+package edu.ucalgary.ensf409;
 
 import org.junit.*;
 
