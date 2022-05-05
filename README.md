@@ -1,7 +1,6 @@
 # Food Bank Manger Application 
 ## Collaborative University of Calgary project 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-[![(https://img.shields.io/github/release/pandao/editor.md.svg]
 
 - All .jar files should be located lib former in the working directory.
 
