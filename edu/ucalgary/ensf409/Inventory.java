@@ -27,6 +27,7 @@ public class Inventory {
     Inventory(SQL data) throws SQLException {
         database = data;
 
+
         try{
             ResultSet resultSet = data.getTable("AVAILABLE_FOOD");
             saturateMapFromDatabase(resultSet);
