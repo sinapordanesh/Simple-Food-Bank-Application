@@ -29,7 +29,7 @@ Access the application: Open a web browser and access the application by navigat
 
 - Java
 - MySQL
-- Spring Boot
+- Spring Boot (The web version is not complete yet)
 ## Authors
 
 - [Saman Pordanesh](https://www.linkedin.com/in/saman-pordanesh-8592ab211/)
