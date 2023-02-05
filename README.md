@@ -20,11 +20,26 @@ MySQL Server 5.7 or higher
 
 Follow these steps to install the application on your local machine:
 
-Clone the repository: git clone https://github.com/[username]/simple-food-bank-application.git
+Clone the repository: git clone https://github.com/sinapordanesh/Simple-Food-Bank-Application
 Import the database schema: Log in to the MySQL server and import the foodbank.sql file located in the db directory.
-Update the configuration: Open the config.properties file located in the src/main/resources directory and update the database connection details.
-Compile and run the application: Open a terminal, navigate to the project directory, and run the following command to compile and run the application: ./gradlew bootRun
-Access the application: Open a web browser and access the application by navigating to http://localhost:8080.
+
+Compile and run the application: Open a terminal, navigate to the project directory, and run the following command to compile and run the application: 
+
+ ``` shell
+javac -cp .:lib/mysql-connector-java-8.0.23.jar com/foodbank/src/*.java
+```
+
+```shell
+java -cp .:lib/mysql-connector-java-8.0.23.jar com.foodbank.src.FoodBankMain
+```
+
+- All .jar files should be located lib former in the working directory.
+
+- All test files are separated from program codes and located at com/foodbank/src/TestFiles
+- To compile it successfully
+
+- FoodBankMain.java is the file that contains main()
+
 ## Built With
 
 - Java
@@ -33,6 +48,8 @@ Access the application: Open a web browser and access the application by navigat
 ## Authors
 
 - [Saman Pordanesh](https://www.linkedin.com/in/saman-pordanesh-8592ab211/)
+- Jinsu Kwak
+- Noureldin Amer
 
 
 ## License
